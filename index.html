@@ -623,6 +623,65 @@
     font-size:14px;font-weight:400;line-height:1.9;color:var(--gray-4);
   }
 
+  /* ===== CASE (自社活用事例) ===== */
+  .case{
+    background:#000;color:#fff;
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+  }
+  .case .label{color:#fff;}
+  .case .label::before{background:#fff;}
+  .case-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.2vw, 60px);font-weight:900;letter-spacing:.02em;line-height:1.3;
+    margin-bottom:20px;color:#fff;
+  }
+  .case-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.4vw, 20px);font-weight:400;line-height:1.85;color:#aaa;
+    max-width:800px;margin-bottom:56px;
+  }
+  .case-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    border-top:1px solid #333;border-bottom:1px solid #333;
+  }
+  @media(max-width:980px){.case-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.case-grid{grid-template-columns:1fr;}}
+  .case-item{
+    padding:36px 32px 36px 0;
+    border-right:1px solid #333;
+  }
+  .case-item:nth-child(3n){border-right:none;padding-right:0;}
+  .case-item:not(:nth-child(3n+1)){padding-left:32px;}
+  .case-item:nth-child(n+4){border-top:1px solid #333;}
+  @media(max-width:980px){
+    .case-item:nth-child(3n){border-right:1px solid #333;}
+    .case-item:nth-child(2n){border-right:none;}
+    .case-item:not(:nth-child(2n+1)){padding-left:32px;}
+    .case-item:nth-child(2n+1){padding-left:0;padding-right:32px;}
+    .case-item:nth-child(n+3){border-top:1px solid #333;}
+  }
+  @media(max-width:640px){
+    .case-item{border-right:none !important;padding:32px 0 !important;}
+    .case-item:nth-child(n+2){border-top:1px solid #333;}
+  }
+  .case-num{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.4em;
+    color:#888;margin-bottom:14px;
+  }
+  .case-task{
+    font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:13px;letter-spacing:.1em;
+    color:#aaa;margin-bottom:12px;
+  }
+  .case-item h3{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(18px, 1.7vw, 22px);font-weight:900;letter-spacing:.02em;
+    line-height:1.5;margin-bottom:14px;color:#fff;
+  }
+  .case-item p{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:13.5px;font-weight:300;line-height:1.85;color:#999;
+  }
+
   /* ===== CATALOG (AI社員カタログ) ===== */
   .family{
     background:var(--gray-1);
@@ -1314,6 +1373,64 @@
   </div>
 </section>
 
+<!-- CASE (自社活用事例) -->
+<section class="case" id="case">
+  <div class="wrap">
+    <div class="label">Case</div>
+    <h2 class="case-head">人に勧める前に、<br>まず自分たちで成果を出す。</h2>
+    <p class="case-sub">
+      自分たちが使って成功していないものを、お客様に提供するわけにはいかない。<br>
+      VAIZOは創業初日からAIを全業務に投入し、実証し続けています。
+    </p>
+
+    <div class="case-grid">
+
+      <div class="case-item">
+        <div class="case-num">01</div>
+        <div class="case-task">広報</div>
+        <h3>全チャネルを実質0.2人で運用。</h3>
+        <p>note・SNS・プレスリリース—AIが下書きし、人間は最終確認のみ。</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-num">02</div>
+        <div class="case-task">事業計画書</div>
+        <h3>作成が3日→1時間に。</h3>
+        <p>補助金申請用フォーマットを即ドラフト。修正と検証に時間を使える。</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-num">03</div>
+        <div class="case-task">Webサイト</div>
+        <h3>公式サイトが、たった1日で完成。</h3>
+        <p>構成案から実装・デプロイまで、V/ENTER WEBが一貫して完結。</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-num">04</div>
+        <div class="case-task">議事録</div>
+        <h3>会議→要約→ナレッジ自動蓄積。</h3>
+        <p>ToDo抽出・意思決定の記録まで、会議終了と同時に完了する。</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-num">05</div>
+        <div class="case-task">営業</div>
+        <h3>リスト→リサーチ→個別メールまで自動。</h3>
+        <p>見込み顧客ごとにカスタマイズされた営業メールが、翌朝には準備完了。</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-num">06</div>
+        <div class="case-task">人事</div>
+        <h3>評価制度を、AIリサーチで自社設計。</h3>
+        <p>他社事例調査・評価指標の設計・運用ルールまで自社完結。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- INLINE CTA BAND -->
 <section class="cta-band">
   <h3>まずは1人、雇ってみませんか。</h3>
@@ -1530,8 +1647,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .faq-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .faq-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .case-grid, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
