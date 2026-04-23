@@ -874,6 +874,38 @@
     font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;line-height:1.8;color:var(--black);
   }
 
+  /* ===== COMPANY INFO ===== */
+  .company{
+    background:var(--white);
+    padding-top:clamp(80px, 10vw, 130px);padding-bottom:clamp(60px, 8vw, 100px);
+    border-top:1px solid var(--black);
+  }
+  .company-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(22px, 2.4vw, 32px);font-weight:900;letter-spacing:.04em;line-height:1.4;
+    margin-bottom:40px;color:var(--black);
+  }
+  .company-table{
+    display:grid;grid-template-columns:200px 1fr;gap:0;
+    border-top:1px solid var(--black);
+    max-width:900px;
+  }
+  @media(max-width:640px){.company-table{grid-template-columns:120px 1fr;}}
+  .company-key{
+    padding:18px 0;
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:var(--black);text-transform:uppercase;
+    border-bottom:1px solid var(--gray-2);
+  }
+  .company-val{
+    padding:18px 0;
+    font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:400;line-height:1.8;
+    color:var(--black);
+    border-bottom:1px solid var(--gray-2);
+  }
+  .company-val a{color:var(--black);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+  .company-val a:hover{opacity:0.6;}
+
   /* ===== CATALOG (AI社員カタログ) ===== */
   .family{
     background:var(--gray-1);
@@ -2007,6 +2039,38 @@
 </section>
 
 <!-- FOOTER -->
+<!-- COMPANY INFO -->
+<section class="company" id="company">
+  <div class="wrap">
+    <h2 class="company-head">運営会社</h2>
+    <div class="company-table">
+      <div class="company-key">Company</div>
+      <div class="company-val">株式会社VAIZO（VAIZO Inc.）</div>
+
+      <div class="company-key">Representative</div>
+      <div class="company-val">代表取締役　橋本 友太郎　／　櫻井 理也</div>
+
+      <div class="company-key">Address</div>
+      <div class="company-val">宮城県仙台市青葉区中央四丁目1番26号</div>
+
+      <div class="company-key">Founded</div>
+      <div class="company-val">2026年4月</div>
+
+      <div class="company-key">Capital</div>
+      <div class="company-val">625万円</div>
+
+      <div class="company-key">Business</div>
+      <div class="company-val">AI導入支援プラットフォーム「V/AIBOU」の開発・提供</div>
+
+      <div class="company-key">Website</div>
+      <div class="company-val"><a href="https://vaizo.jp" target="_blank" rel="noopener">vaizo.jp</a></div>
+
+      <div class="company-key">Contact</div>
+      <div class="company-val"><a href="mailto:info@vaizo.co.jp">info@vaizo.co.jp</a></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div>
