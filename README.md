@@ -1,20 +1,61 @@
-# V/AIBOU — Provisional LP
+# V/AIBOU LP
 
-VAIZO第1の柱「V/AIBOU プラットフォーム」の暫定版ランディングページ。
+VAIZO第1の柱「V/AIBOU プラットフォーム」のLP。
 
-## アクセス
-- 公開URL：GitHub Pages（リポジトリ設定で有効化後に確定）
-- 暗証番号：4桁（限定共有）
+---
 
-## 構成
-- `index.html` — メインLP（VAIZOエディトリアル白黒、PINゲート付き）
+## ⭐ 最新版
 
-## 主要要素
-- 東大・早慶の頭脳と専門家の実務能力
-- 病まない、休まない、辞めない
-- 月額3万円から
-- V/AIBOU、V/SANBO、V/ENTER、V/SEARCH、V/HOJOKIN ロール紹介
+**`index.html`** が常に最新・本番候補。これだけ見れば今のLPが分かる。
 
-## 注意
-- 暫定版のため文言・価格は変更可能性あり
-- PIN保護はクライアントサイド簡易ガード（厳密なアクセス制御ではない）
+---
+
+## ディレクトリ構成
+
+```
+V AIBOU_LP/
+├── index.html                    ← 【最新版・常にここが正】
+├── README.md                     ← このファイル
+├── assets/                       ← LP内で使う画像
+│   ├── demo-ui.png               (1人分のAIスタッフUIスクショ)
+│   └── parallel-team.png         (4人同時稼働のUIスクショ)
+├── _archive/                     ← 過去スナップショット（参照のみ、編集禁止）
+│   ├── v3_20260422_コピー確定.html
+│   └── v3_20260423_ENTER命名前.html
+└── .git/                         ← GitHubリポジトリ連携
+```
+
+---
+
+## 現状のバージョン
+
+- **v34**（2026-04-24）
+- ドメイン表記：`v-aibou.com` / `vaizo.jp`
+- 公開前暫定版（PINゲート `0415` 付き）
+
+---
+
+## 本番公開
+
+- **ドメイン**：v-aibou.com
+- **実装**：WordPress（Xserver）
+- **公開日**：2026-04-24
+- **タスクリスト**：[V_AIBOU_LP公開タスクリスト_20260424](https://docs.google.com/document/d/1efy6CozUlgl4NrfumioeIMICGsBR_u9_sNmHdR8H5oY/edit)
+
+---
+
+## プレビュー
+
+- **プレビューURL**：https://y-hashimoto-vaizo.github.io/vaibou-lp-preview/
+- **PIN**：`0415`（限定共有中）
+- **GitHubリポジトリ**：https://github.com/y-hashimoto-vaizo/vaibou-lp-preview
+
+---
+
+## 編集ルール
+
+- **編集は `index.html` のみ**
+- 大きな変更前にスナップショットを取る → `_archive/vN_YYYYMMDD_説明.html` にコピー保存
+- git commit はコミットメッセージに `vN` を付ける（例：`v35: 価格改定`）
+- `git push` で GitHub Pages 側も自動反映
+- PIN保護はクライアント側簡易ガード。本番では削除
