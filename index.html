@@ -270,6 +270,55 @@
     color:var(--gray-4);
   }
 
+  /* ===== DEMO 4 STEPS ===== */
+  .demo{
+    background:var(--gray-1);
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  .demo-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.2vw, 60px);font-weight:900;letter-spacing:.02em;line-height:1.3;
+    margin-bottom:20px;color:var(--black);
+  }
+  .demo-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.4vw, 20px);font-weight:400;line-height:1.85;color:var(--gray-4);
+    max-width:640px;margin-bottom:64px;
+  }
+  .demo-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;
+    border-top:1px solid var(--black);
+  }
+  @media(max-width:840px){.demo-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.demo-grid{grid-template-columns:1fr;}}
+  .demo-step{
+    padding:40px 28px 40px 0;
+    border-right:1px solid var(--gray-2);
+    border-bottom:1px solid var(--black);
+  }
+  .demo-step:last-child{border-right:none;padding-right:0;}
+  .demo-step:not(:first-child){padding-left:28px;}
+  @media(max-width:840px){
+    .demo-step{padding:32px 20px !important;border-right:1px solid var(--gray-2);}
+    .demo-step:nth-child(2n){border-right:none;}
+  }
+  @media(max-width:520px){
+    .demo-step{border-right:none !important;padding:28px 0 !important;}
+  }
+  .demo-num{
+    font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(48px, 5vw, 72px);
+    letter-spacing:-0.03em;line-height:1;color:var(--black);margin-bottom:12px;
+  }
+  .demo-key{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.4em;
+    margin-bottom:14px;color:var(--black);text-transform:uppercase;
+  }
+  .demo-desc{
+    font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:400;line-height:1.85;
+    color:var(--gray-4);
+  }
+
   /* ===== PRICE SHOCK ===== */
   .price{
     background:var(--gray-1);
@@ -755,6 +804,37 @@
   </div>
 </section>
 
+<!-- DEMO 4 STEPS -->
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="label">Demo</div>
+    <h2 class="demo-head">操作はたった4ステップ。</h2>
+    <p class="demo-sub">思考で止めない。ボタン1つで、動き出す。</p>
+    <div class="demo-grid">
+      <div class="demo-step">
+        <div class="demo-num">01</div>
+        <div class="demo-key">Folder</div>
+        <div class="demo-desc">会社のフォルダを指定する。</div>
+      </div>
+      <div class="demo-step">
+        <div class="demo-num">02</div>
+        <div class="demo-key">Role</div>
+        <div class="demo-desc">最適なAIスタッフが、自動起動。</div>
+      </div>
+      <div class="demo-step">
+        <div class="demo-num">03</div>
+        <div class="demo-key">Work</div>
+        <div class="demo-desc">指示するか、提案を待つ。</div>
+      </div>
+      <div class="demo-step">
+        <div class="demo-num">04</div>
+        <div class="demo-key">Output</div>
+        <div class="demo-desc">成果物を保存。フィードバックで磨く。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICE / PLANS -->
 <section class="price" id="price">
   <div class="wrap">
@@ -1041,8 +1121,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .price-head, .faq-intro, .family-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.service-grid, .plans-grid, .values-grid, .family-list, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .price-head, .faq-intro, .family-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .demo-grid, .plans-grid, .values-grid, .family-list, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
