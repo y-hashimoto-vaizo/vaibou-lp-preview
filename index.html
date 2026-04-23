@@ -230,6 +230,46 @@
     body{padding-bottom:80px;}
   }
 
+  /* ===== SERVICE ===== */
+  .service{background:var(--white);padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);}
+  .service-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.2vw, 60px);font-weight:900;letter-spacing:.02em;line-height:1.3;
+    margin-bottom:28px;color:var(--black);
+  }
+  .service-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(17px, 1.5vw, 22px);font-weight:400;line-height:1.85;color:var(--gray-4);
+    max-width:760px;margin-bottom:64px;
+  }
+  .service-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  @media(max-width:840px){.service-grid{grid-template-columns:1fr;}}
+  .service-item{
+    padding:44px 40px 44px 0;
+    border-right:1px solid var(--gray-2);
+  }
+  .service-item:last-child{border-right:none;padding-right:0;}
+  .service-item:not(:first-child){padding-left:40px;}
+  @media(max-width:840px){
+    .service-item{border-right:none;border-bottom:1px solid var(--gray-2);padding:32px 0 !important;}
+    .service-item:last-child{border-bottom:none;}
+  }
+  .service-num{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.4em;
+    margin-bottom:18px;color:var(--black);
+  }
+  .service-item h3{
+    font-family:'Noto Sans JP',sans-serif;font-size:clamp(19px, 1.6vw, 24px);font-weight:700;letter-spacing:.03em;
+    line-height:1.5;margin-bottom:16px;color:var(--black);
+  }
+  .service-item p{
+    font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:300;line-height:1.95;
+    color:var(--gray-4);
+  }
+
   /* ===== PRICE SHOCK ===== */
   .price{
     background:var(--gray-1);
@@ -686,6 +726,35 @@
   </div>
 </section>
 
+<!-- SERVICE -->
+<section class="service" id="service">
+  <div class="wrap">
+    <div class="label">Service</div>
+    <h2 class="service-head">10人の会社に、<br>100人のプロを。</h2>
+    <p class="service-sub">
+      聞かれたら答えるAIではありません。<br>
+      「社長、今これをやるべきです」と自ら提案してくる参謀です。
+    </p>
+    <div class="service-grid">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <h3>「考えてくれる」<br>能動型AI</h3>
+        <p>指示を待つだけじゃない。こちらの状況を読んで、「次はこれをやるべきでは」と自分から提起する。</p>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <h3>提案して終わりじゃない。<br>実行まで一気通貫。</h3>
+        <p>壁打ちAIやコンサルで止まらない。リサーチ・資料作成・実装まで、AIが手を動かして仕上げる。</p>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <h3>会社の方向性や暗黙知まで、<br>活用して動く。</h3>
+        <p>戦略・ポリシー・過去の判断・社内の"あうん"——書かれていない前提も踏まえた上で実行する。だから、仕上がりが汎用AIとまったく違う。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICE / PLANS -->
 <section class="price" id="price">
   <div class="wrap">
@@ -972,8 +1041,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.price-head, .faq-intro, .family-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.plans-grid, .values-grid, .family-list, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .price-head, .faq-intro, .family-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .plans-grid, .values-grid, .family-list, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
