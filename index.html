@@ -18,8 +18,8 @@
   :root{
     --black:#000;
     --white:#fff;
-    --orange:#e67e22;
-    --orange-dark:#c56812;
+    --orange:#FF6B35;
+    --orange-dark:#E64F15;
     --gray-1:#fafafa;
     --gray-2:#e5e5e5;
     --gray-3:#888;
@@ -81,7 +81,67 @@
   .hero{
     padding-top:clamp(140px, 18vw, 220px);
     padding-bottom:clamp(100px, 12vw, 160px);
-    background:var(--white);
+    background:
+      radial-gradient(circle at 85% 15%, rgba(255,107,53,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 10% 85%, rgba(0,0,0,0.04) 0%, transparent 50%),
+      #fafafa;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"V/";
+    position:absolute;top:-18%;right:-4%;
+    font-family:'Inter',sans-serif;font-weight:900;
+    font-size:clamp(520px, 62vw, 1100px);
+    letter-spacing:-0.06em;line-height:1;
+    color:rgba(0,0,0,0.035);
+    pointer-events:none;user-select:none;
+    animation:hero-watermark-float 14s ease-in-out infinite;
+    z-index:0;
+  }
+  .hero::after{
+    content:"";position:absolute;
+    top:62%;left:-10%;width:130%;height:2px;
+    background:var(--orange);
+    opacity:0.18;
+    transform:rotate(-14deg);transform-origin:center;
+    pointer-events:none;
+    animation:hero-slash-drift 22s linear infinite;
+    z-index:0;
+  }
+  .hero > .wrap{position:relative;z-index:1;}
+  @keyframes hero-watermark-float{
+    0%,100%{transform:translate(0,0) rotate(0deg);}
+    50%{transform:translate(-28px,-14px) rotate(-0.6deg);}
+  }
+  @keyframes hero-slash-drift{
+    0%{transform:rotate(-14deg) translateX(0);}
+    50%{transform:rotate(-14deg) translateX(-30px);}
+    100%{transform:rotate(-14deg) translateX(0);}
+  }
+
+  /* Scroll hint */
+  .hero-scroll{
+    position:absolute;bottom:28px;left:50%;
+    transform:translateX(-50%);
+    font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.45em;
+    color:var(--gray-3);text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    z-index:2;pointer-events:none;
+    animation:hero-scroll-fadein 0.8s ease-out 2.4s both;
+  }
+  .hero-scroll-line{
+    width:1px;height:40px;background:var(--black);
+    animation:hero-scroll-bounce 2.2s cubic-bezier(0.65,0,0.35,1) infinite;
+    transform-origin:top;
+  }
+  @keyframes hero-scroll-fadein{
+    0%{opacity:0;transform:translate(-50%,10px);}
+    100%{opacity:1;transform:translate(-50%,0);}
+  }
+  @keyframes hero-scroll-bounce{
+    0%,100%{transform:scaleY(1);opacity:0.8;}
+    50%{transform:scaleY(0.4) translateY(12px);opacity:0.2;}
   }
   .hero-meta{
     font-family:'Inter',sans-serif;
@@ -1219,23 +1279,42 @@
     .reveal-stagger.in-view > *:nth-child(7){transition-delay:540ms;}
     .reveal-stagger.in-view > *:nth-child(8){transition-delay:630ms;}
 
-    /* Hero entrance after intro — keyアイテムのみ4点 */
+    /* Hero entrance after intro */
     .hero .hero-logo,
+    .hero .hero-tagline > br + span.hero-hl,
     .hero .hero-tagline,
-    .hero .hero-lead,
     .hero .hero-cta{
       opacity:0;transform:translateY(18px);
       animation:hero-in 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
     }
+    .hero-tagline .hero-line{
+      display:inline-block;
+      opacity:0;transform:translateY(14px);
+      animation:hero-line-in 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
     body.intro-active .hero .hero-logo,
     body.intro-active .hero .hero-tagline,
-    body.intro-active .hero .hero-lead,
-    body.intro-active .hero .hero-cta{animation-play-state:paused;}
+    body.intro-active .hero .hero-cta,
+    body.intro-active .hero-tagline .hero-line{animation-play-state:paused;}
     .hero .hero-logo    {animation-delay:0.15s;}
-    .hero .hero-tagline {animation-delay:0.40s;}
-    .hero .hero-lead    {animation-delay:0.65s;}
-    .hero .hero-cta     {animation-delay:0.90s;}
+    .hero .hero-tagline {animation:none;opacity:1;transform:none;}
+    .hero-tagline .hero-line:nth-child(1){animation-delay:0.4s;}
+    .hero-tagline .hero-line:nth-child(2){animation-delay:0.65s;}
+    .hero-tagline .hero-line:nth-child(3){animation-delay:0.9s;}
+    .hero-tagline .hero-line:nth-child(4){animation-delay:1.15s;}
+    .hero .hero-cta     {animation-delay:1.5s;}
     @keyframes hero-in{to{opacity:1;transform:translateY(0);}}
+    @keyframes hero-line-in{to{opacity:1;transform:translateY(0);}}
+
+    /* CTA pulse */
+    .hero-cta .btn-primary{
+      position:relative;
+      animation:cta-pulse 2.4s ease-in-out 2s infinite;
+    }
+    @keyframes cta-pulse{
+      0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,0.45);}
+      50%{box-shadow:0 0 0 16px rgba(255,107,53,0);}
+    }
   }
 </style>
 <div id="pin-gate">
@@ -1316,15 +1395,20 @@
   <div class="wrap">
     <h1 class="hero-logo">V/AIBOU</h1>
     <div class="hero-tagline">
-      <span class="hero-hl">東大・早慶の頭脳</span>と、<br>
-      <span class="hero-hl">専門家の実務能力</span>。<br>
-      <span class="hero-hl">24時間365日</span>、休まない、病まない、辞めない。<br>
-      こんな"新メンバー"、<span class="hero-hl">月3万円</span>で迎えませんか？
+      <span class="hero-line"><span class="hero-hl">東大・早慶の頭脳</span>と、</span><br>
+      <span class="hero-line"><span class="hero-hl">専門家の実務能力</span>。</span><br>
+      <span class="hero-line"><span class="hero-hl">24時間365日</span>、休まない、病まない、辞めない。</span><br>
+      <span class="hero-line">こんな"新メンバー"、<span class="hero-hl">月3万円</span>で迎えませんか？</span>
     </div>
     <div class="hero-cta">
       <a href="#cta" class="btn btn-primary">無料で試してみる</a>
       <a href="#price" class="btn btn-outline">料金を見る</a>
     </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>SCROLL</span>
+      <span class="hero-scroll-line"></span>
+    </div>
+
     <div class="hero-contact">
       <span><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:info@vaizo.jp">info@vaizo.jp</a></span>
     </div>
