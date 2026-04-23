@@ -725,6 +725,76 @@
     font-size:13.5px;font-weight:300;line-height:1.85;color:#999;
   }
 
+  /* ===== SECURITY ===== */
+  .security{
+    background:#000;color:#fff;
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+  }
+  .security .label{color:#fff;}
+  .security .label::before{background:#fff;}
+  .security-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(30px, 3.8vw, 52px);font-weight:900;letter-spacing:.02em;line-height:1.35;
+    margin-bottom:20px;color:#fff;
+  }
+  .security-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(15px, 1.3vw, 18px);font-weight:400;line-height:1.85;color:#aaa;
+    max-width:800px;margin-bottom:56px;
+  }
+  .security-block{
+    border:1px solid #333;padding:32px 36px;margin-bottom:20px;
+  }
+  .security-block h3{
+    font-family:'Noto Sans JP',sans-serif;font-size:18px;font-weight:700;letter-spacing:.04em;
+    color:#fff;margin-bottom:14px;
+  }
+  .security-block p{
+    font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:300;line-height:1.85;
+    color:#bbb;
+  }
+  .security-users{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:18px;margin-bottom:18px;
+  }
+  @media(max-width:840px){.security-users{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.security-users{grid-template-columns:1fr;}}
+  .security-user{
+    padding:14px 16px;background:#0a0a0a;border:1px solid #222;
+  }
+  .security-user-name{
+    font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:14px;color:#fff;margin-bottom:4px;
+  }
+  .security-user-desc{
+    font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:#777;line-height:1.6;
+  }
+  .security-detail-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;
+  }
+  @media(max-width:640px){.security-detail-grid{grid-template-columns:1fr;}}
+  .security-detail{
+    padding-top:14px;border-top:1px solid #222;
+  }
+  .security-detail-key{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:.3em;
+    color:#888;text-transform:uppercase;margin-bottom:6px;
+  }
+  .security-detail-val{
+    font-family:'Noto Sans JP',sans-serif;font-size:13.5px;font-weight:400;line-height:1.7;
+    color:#fff;
+  }
+  .security-enterprise{
+    margin-top:24px;padding:20px 22px;
+    background:#0a0a0a;border:1px dashed #fff;
+  }
+  .security-enterprise-label{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:#fff;margin-bottom:8px;
+  }
+  .security-enterprise-text{
+    font-family:'Noto Sans JP',sans-serif;font-size:13.5px;font-weight:300;line-height:1.85;
+    color:#ccc;
+  }
+
   /* ===== CATALOG (AI社員カタログ) ===== */
   .family{
     background:var(--gray-1);
@@ -1474,6 +1544,89 @@
   </div>
 </section>
 
+<!-- SECURITY -->
+<section class="security" id="security">
+  <div class="wrap">
+    <div class="label">Security</div>
+    <h2 class="security-head">お客様のデータを守る、<br>世界最高水準のインフラ。</h2>
+    <p class="security-sub">V/AIBOUは、Amazon社が運営するクラウド基盤「AWS」上で稼働しています。</p>
+
+    <div class="security-block">
+      <h3>AWS（Amazon Web Services）とは</h3>
+      <p>Amazonが提供する世界最大のクラウドコンピューティング基盤。世界中の政府機関・金融機関・大企業が採用しており、セキュリティ・可用性・信頼性で世界最高水準を誇ります。</p>
+    </div>
+
+    <div class="security-block">
+      <h3>AWSで運用されている身近なサービス・機関</h3>
+      <div class="security-users">
+        <div class="security-user">
+          <div class="security-user-name">三菱UFJ銀行</div>
+          <div class="security-user-desc">国内最大手メガバンクの基幹システム</div>
+        </div>
+        <div class="security-user">
+          <div class="security-user-name">みずほ銀行</div>
+          <div class="security-user-desc">次世代バンキング基盤</div>
+        </div>
+        <div class="security-user">
+          <div class="security-user-name">デジタル庁</div>
+          <div class="security-user-desc">日本政府のガバメントクラウド</div>
+        </div>
+        <div class="security-user">
+          <div class="security-user-name">任天堂</div>
+          <div class="security-user-desc">Nintendo Switchのオンライン基盤</div>
+        </div>
+        <div class="security-user">
+          <div class="security-user-name">NTTドコモ</div>
+          <div class="security-user-desc">通信インフラ・顧客管理基盤</div>
+        </div>
+        <div class="security-user">
+          <div class="security-user-name">Netflix</div>
+          <div class="security-user-desc">全世界2億人以上の配信基盤</div>
+        </div>
+      </div>
+      <p>国の行政システムからメガバンク、グローバル企業まで——最高レベルのセキュリティが求められる組織と同じ基盤で、お客様のデータをお預かりします。</p>
+    </div>
+
+    <div class="security-block">
+      <h3>V/AIBOUのセキュリティ詳細</h3>
+      <p>中小企業にも、大企業と同水準の運用体制を。</p>
+      <div class="security-detail-grid">
+        <div class="security-detail">
+          <div class="security-detail-key">Data Location</div>
+          <div class="security-detail-val">日本国内（AWS東京リージョン）で全データを保管</div>
+        </div>
+        <div class="security-detail">
+          <div class="security-detail-key">Encryption in Transit</div>
+          <div class="security-detail-val">通信暗号化：TLS 1.3（最新仕様）</div>
+        </div>
+        <div class="security-detail">
+          <div class="security-detail-key">Encryption at Rest</div>
+          <div class="security-detail-val">保存データ暗号化：AES-256</div>
+        </div>
+        <div class="security-detail">
+          <div class="security-detail-key">Access Control</div>
+          <div class="security-detail-val">役割ベースアクセス制御（RBAC）＋ 多要素認証（MFA）</div>
+        </div>
+        <div class="security-detail">
+          <div class="security-detail-key">Backup</div>
+          <div class="security-detail-val">日次自動バックアップ／30日間保持</div>
+        </div>
+        <div class="security-detail">
+          <div class="security-detail-key">Data Portability</div>
+          <div class="security-detail-val">解約時は全データJSONエクスポート可／90日後に完全削除</div>
+        </div>
+      </div>
+
+      <div class="security-enterprise">
+        <div class="security-enterprise-label">FOR ENTERPRISE PLAN</div>
+        <div class="security-enterprise-text">
+          独自サーバー環境（マルチテナント非共有）／SOC2 Type II 取得予定／詳細監査ログの提供／専任セキュリティ担当のアサイン
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INLINE CTA BAND -->
 <section class="cta-band">
   <h3>まずは1人、雇ってみませんか。</h3>
@@ -1761,7 +1914,7 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .faq-intro, .future-statement, .cta h2, .cta-band h3';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .security-head, .security-sub, .faq-intro, .future-statement, .cta h2, .cta-band h3';
   const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .case-grid, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
