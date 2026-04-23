@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="V/AIBOU — 経営者の相棒であり、経営のバイブル。中小企業の経営者が優秀すぎるAIスタッフを月5万円から雇える、組織プラットフォーム。">
+<title>V/AIBOU — 経営者の相棒であり、経営のバイブル</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --black:#000;
+    --white:#fff;
+    --gray-1:#fafafa;
+    --gray-2:#e5e5e5;
+    --gray-3:#888;
+    --gray-4:#444;
+    --container:100%;
+    --pad-x:clamp(24px, 4vw, 80px);
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    color:var(--black);background:var(--white);
+    line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+
+  /* ===== NAV ===== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--gray-2);
+  }
+  .nav-inner{
+    max-width:100%;margin:0 auto;
+    padding:16px var(--pad-x);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .nav-logo{
+    font-family:'Inter',sans-serif;
+    font-size:22px;font-weight:900;letter-spacing:-0.035em;color:var(--black);
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex;gap:32px;align-items:center;
+    font-size:13px;letter-spacing:.15em;
+  }
+  .nav-links a{
+    color:var(--black);text-decoration:none;font-weight:400;
+  }
+  .nav-cta{
+    padding:10px 20px;background:var(--black);color:var(--white) !important;
+    font-weight:700;letter-spacing:.15em;
+  }
+  @media(max-width:768px){
+    .nav-links .hide-mobile{display:none;}
+  }
+
+  /* ===== SECTION BASE ===== */
+  section{padding:clamp(80px, 12vw, 160px) var(--pad-x);}
+  .wrap{max-width:100%;margin:0 auto;}
+  .label{
+    font-family:'Inter',sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.45em;text-transform:uppercase;
+    margin-bottom:24px;color:var(--black);
+    display:flex;align-items:center;gap:14px;
+  }
+  .label::before{content:"";width:28px;height:1px;background:var(--black);}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding-top:clamp(140px, 18vw, 220px);
+    padding-bottom:clamp(100px, 12vw, 160px);
+    background:var(--white);
+  }
+  .hero-meta{
+    font-family:'Inter',sans-serif;
+    font-size:12px;letter-spacing:.45em;text-transform:uppercase;
+    color:var(--gray-3);margin-bottom:40px;
+  }
+  .hero-logo{
+    font-family:'Inter',sans-serif;
+    font-size:clamp(80px, 14vw, 220px);font-weight:900;
+    letter-spacing:-0.045em;line-height:.95;color:var(--black);
+    margin-bottom:30px;
+  }
+  .hero-reading{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:16px;font-weight:400;letter-spacing:.5em;color:var(--gray-3);
+    margin-bottom:48px;
+  }
+  .hero-reading b{font-weight:700;color:var(--black);}
+  .hero-reading .sep{margin:0 12px;color:var(--gray-2);}
+  .hero-tagline{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.4vw, 72px);font-weight:900;letter-spacing:-0.015em;
+    line-height:1.2;color:var(--black);
+    border-top:1px solid var(--black);padding-top:36px;margin-bottom:16px;
+    max-width:1100px;
+  }
+  .hero-hl{
+    background:var(--black);color:var(--white);
+    padding:0 14px;display:inline-block;
+  }
+  .hero-subtag{
+    margin-top:40px;
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(18px, 1.6vw, 24px);font-weight:500;letter-spacing:.04em;color:var(--gray-4);
+    padding-top:24px;border-top:1px solid var(--gray-2);
+  }
+  .hero-tagline-en{
+    font-family:'Inter',sans-serif;
+    font-size:14px;letter-spacing:.5em;color:var(--gray-3);margin-bottom:48px;
+  }
+  .hero-lead{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.3vw, 19px);font-weight:400;line-height:1.9;color:var(--gray-4);
+    max-width:720px;margin-bottom:48px;
+  }
+  .hero-lead strong{font-weight:700;color:var(--black);}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:18px 40px;
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:14px;font-weight:700;letter-spacing:.2em;text-decoration:none;
+    border:1px solid var(--black);transition:all .2s;cursor:pointer;
+  }
+  .btn-primary{background:var(--black);color:var(--white);}
+  .btn-primary:hover{background:var(--white);color:var(--black);}
+  .btn-outline{background:var(--white);color:var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+  .btn-line{background:#06c755;color:#fff;border-color:#06c755;}
+  .btn-line:hover{background:#05a648;border-color:#05a648;color:#fff;}
+  .btn-sm{padding:12px 22px;font-size:12px;letter-spacing:.18em;}
+  .btn-block{display:block;width:100%;text-align:center;}
+
+  /* Hero contact bar */
+  .hero-contact{
+    margin-top:32px;padding-top:24px;border-top:1px solid var(--gray-2);
+    display:flex;gap:28px;flex-wrap:wrap;align-items:center;
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:14px;color:var(--gray-4);
+  }
+  .hero-contact strong{color:var(--black);font-weight:700;letter-spacing:.08em;}
+  .hero-contact a{color:var(--black);text-decoration:none;font-weight:700;}
+  .hero-contact a:hover{text-decoration:underline;}
+  .hero-contact .dot{color:var(--gray-2);}
+
+  /* Inline CTA band */
+  .cta-band{
+    background:var(--black);color:var(--white);
+    padding:clamp(48px, 7vw, 80px) var(--pad-x);
+    text-align:center;
+  }
+  .cta-band h3{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(22px, 2.6vw, 36px);font-weight:700;letter-spacing:.04em;line-height:1.5;
+    margin-bottom:14px;
+  }
+  .cta-band p{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:15px;color:#aaa;margin-bottom:32px;
+  }
+  .cta-band .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .cta-band .btn-outline{background:transparent;color:var(--white);border-color:var(--white);}
+  .cta-band .btn-outline:hover{background:var(--white);color:var(--black);}
+
+  /* Plan CTA */
+  .plan-cta{
+    margin-top:20px;
+  }
+  .plan-card.featured .btn-primary{background:var(--white);color:var(--black);border-color:var(--white);}
+  .plan-card.featured .btn-primary:hover{background:transparent;color:var(--white);}
+  .plan-card:not(.featured) .plan-cta .btn-primary{background:var(--black);color:var(--white);}
+
+  /* Sticky mobile CTA */
+  .sticky-cta{
+    display:none;
+    position:fixed;bottom:0;left:0;right:0;z-index:200;
+    background:var(--white);border-top:1px solid var(--black);
+    padding:12px 16px;
+    box-shadow:0 -4px 20px rgba(0,0,0,.1);
+  }
+  .sticky-cta-inner{
+    display:flex;gap:8px;justify-content:space-between;align-items:center;
+  }
+  .sticky-cta .btn{padding:12px 16px;font-size:12px;letter-spacing:.12em;flex:1;}
+  @media(max-width:768px){
+    .sticky-cta{display:block;}
+    body{padding-bottom:80px;}
+  }
+
+  /* ===== PRICE SHOCK ===== */
+  .price{
+    background:var(--gray-1);
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  .price-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(22px, 2.6vw, 36px);font-weight:700;line-height:1.5;
+    letter-spacing:.03em;margin-bottom:56px;max-width:900px;
+  }
+  .price-head em{font-style:normal;background:var(--black);color:var(--white);padding:0 12px;}
+
+  /* Plans */
+  .plans-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;
+    margin-top:48px;
+  }
+  @media(max-width:960px){.plans-grid{grid-template-columns:1fr;}}
+  .plan-card{
+    position:relative;background:var(--white);color:var(--black);
+    border:1px solid var(--black);padding:40px 32px 36px;
+    display:flex;flex-direction:column;
+  }
+  .plan-card.featured{background:var(--black);color:var(--white);}
+  .plan-card.featured .plan-sub{color:#bbb;}
+  .plan-card.featured .plan-label{color:#bbb;}
+  .plan-card.featured .plan-unit{color:#bbb;}
+  .plan-card.featured .plan-note{color:#888;}
+  .plan-card.featured .plan-divider{border-top-color:#555;}
+  .plan-card.featured .plan-bottom{border-top-color:#555;color:#bbb;}
+  .plan-card.featured .plan-features li{border-bottom-color:#333;}
+  .plan-badge{
+    position:absolute;top:-1px;right:24px;
+    background:var(--white);color:var(--black);
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:.25em;
+    padding:8px 14px;
+  }
+  .plan-label{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:var(--gray-3);text-transform:uppercase;margin-bottom:12px;
+  }
+  .plan-name{
+    font-family:'Noto Sans JP',sans-serif;font-weight:900;
+    font-size:26px;letter-spacing:-0.01em;line-height:1.25;margin-bottom:10px;
+  }
+  .plan-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:13px;color:var(--gray-4);line-height:1.7;margin-bottom:28px;
+  }
+  .plan-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:8px;}
+  .plan-yen{font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:20px;}
+  .plan-amount{font-family:'Inter',sans-serif;font-weight:900;font-size:56px;letter-spacing:-0.04em;line-height:1;}
+  .plan-unit{font-family:'Noto Sans JP',sans-serif;font-weight:500;font-size:13px;color:var(--gray-3);}
+  .plan-note{font-size:12px;color:var(--gray-3);margin-bottom:24px;}
+  .plan-divider{border:0;border-top:1px solid #d0d0d0;margin:0 0 24px;}
+  .plan-features{flex:1;list-style:none;padding:0;margin:0 0 28px;}
+  .plan-features li{
+    padding:10px 0 10px 20px;font-size:13.5px;line-height:1.65;position:relative;
+    border-bottom:1px solid #e5e5e5;
+  }
+  .plan-features li:last-child{border-bottom:none;}
+  .plan-features li::before{content:"—";position:absolute;left:0;top:10px;font-weight:900;}
+  .plan-bottom{
+    margin-top:auto;padding-top:16px;border-top:1px dashed #bbb;
+    font-size:12px;color:var(--gray-4);line-height:1.6;
+  }
+
+  /* Add-ons */
+  .addons-block{
+    margin-top:56px;border:1px solid var(--black);padding:40px;
+    background:var(--white);
+  }
+  .addons-label{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:var(--gray-3);text-transform:uppercase;margin-bottom:8px;
+  }
+  .addons-title{
+    font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:24px;margin-bottom:28px;
+  }
+  .addons-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;
+  }
+  @media(max-width:840px){.addons-grid{grid-template-columns:1fr;}}
+  .addon{border-top:1px solid var(--black);padding-top:16px;}
+  .addon-kind{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:.25em;
+    color:var(--gray-3);text-transform:uppercase;margin-bottom:8px;
+  }
+  .addon-price{
+    font-family:'Inter',sans-serif;font-weight:900;font-size:32px;letter-spacing:-0.02em;line-height:1;
+    margin-bottom:8px;
+  }
+  .addon-price span{font-size:14px;font-weight:700;margin-left:4px;}
+  .addon-price.addon-price-quote{font-family:'Noto Sans JP',sans-serif;font-size:22px;letter-spacing:0;}
+  .addon p{font-size:13px;color:var(--gray-4);line-height:1.7;}
+
+  /* ===== VALUES ===== */
+  .values{background:var(--white);}
+  .values-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+    margin-top:48px;
+  }
+  @media(max-width:840px){.values-grid{grid-template-columns:1fr;}}
+  .value{
+    padding:48px 40px;
+    border-right:1px solid var(--gray-2);
+  }
+  .value:last-child{border-right:none;}
+  @media(max-width:840px){
+    .value{border-right:none;border-bottom:1px solid var(--gray-2);}
+    .value:last-child{border-bottom:none;}
+  }
+  .value-num{
+    font-family:'Inter',sans-serif;
+    font-size:13px;font-weight:700;letter-spacing:.4em;margin-bottom:20px;
+  }
+  .value h3{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:24px;font-weight:700;letter-spacing:.04em;line-height:1.4;
+    margin-bottom:16px;
+  }
+  .value p{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:15px;font-weight:300;line-height:1.9;color:var(--gray-4);
+  }
+
+  /* ===== FAMILY ===== */
+  .family{
+    background:var(--gray-1);
+    border-top:1px solid var(--black);
+  }
+  .family-intro{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(18px, 1.6vw, 22px);font-weight:400;line-height:1.9;color:var(--gray-4);
+    max-width:760px;margin-bottom:56px;
+  }
+  .family-intro b{font-weight:700;color:var(--black);}
+  .family-list{
+    display:flex;flex-direction:column;gap:0;
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  .family-row{
+    display:grid;grid-template-columns:minmax(200px, 380px) 1fr auto;gap:40px;
+    padding:28px 0;align-items:center;
+    border-top:1px solid var(--gray-2);
+  }
+  .family-row:first-child{border-top:none;}
+  @media(max-width:840px){
+    .family-row{grid-template-columns:1fr;gap:8px;padding:24px 0;}
+  }
+  .family-logo{
+    font-family:'Inter',sans-serif;
+    font-size:clamp(36px, 4vw, 54px);font-weight:900;letter-spacing:-0.04em;line-height:1;
+  }
+  .family-desc{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:15px;font-weight:300;line-height:1.8;color:var(--gray-4);
+  }
+  .family-desc b{font-weight:700;color:var(--black);}
+  .family-tier{
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.3em;color:var(--black);
+    white-space:nowrap;padding:6px 12px;border:1px solid var(--black);
+  }
+  @media(max-width:840px){.family-tier{justify-self:start;}}
+
+  /* ===== FUTURE ===== */
+  .future{
+    background:var(--black);color:var(--white);
+  }
+  .future .label{color:var(--white);}
+  .future .label::before{background:var(--white);}
+  .future-statement{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(28px, 4vw, 60px);font-weight:700;letter-spacing:.03em;
+    line-height:1.4;margin-bottom:56px;
+  }
+  .future-table{
+    display:grid;grid-template-columns:200px 1fr;gap:0;
+    border-top:1px solid #333;
+  }
+  @media(max-width:840px){.future-table{grid-template-columns:140px 1fr;}}
+  .future-table > div{
+    padding:24px 0;border-bottom:1px solid #333;
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:15px;font-weight:400;letter-spacing:.08em;color:#aaa;
+  }
+  .future-table > div.key{
+    font-weight:700;color:var(--white);letter-spacing:.18em;
+  }
+  .future-table > div.value{padding-left:32px;}
+  .future-table > div.highlight{
+    font-weight:700;color:var(--white);font-size:17px;letter-spacing:.04em;
+  }
+
+  /* ===== CTA ===== */
+  .cta{background:var(--white);}
+  .cta-inner{
+    text-align:center;padding:clamp(60px, 8vw, 100px) var(--pad-x);
+    border:1px solid var(--black);
+  }
+  .cta h2{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(26px, 3vw, 42px);font-weight:700;letter-spacing:.04em;line-height:1.5;
+    margin-bottom:20px;
+  }
+  .cta p{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:16px;color:var(--gray-4);margin-bottom:40px;
+  }
+  .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:60px var(--pad-x) 40px;
+    border-top:1px solid var(--black);background:var(--white);
+  }
+  .footer-inner{
+    max-width:100%;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;
+  }
+  .footer-brand{
+    font-family:'Inter',sans-serif;
+    font-size:24px;font-weight:900;letter-spacing:-0.04em;margin-bottom:12px;
+  }
+  .footer-meta{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:12px;color:var(--gray-3);line-height:1.9;
+  }
+  .footer-links{
+    display:flex;flex-direction:column;gap:10px;
+    font-family:'Inter',sans-serif;
+    font-size:13px;letter-spacing:.15em;
+  }
+  .footer-links a{color:var(--black);text-decoration:none;}
+  .footer-copy{
+    max-width:100%;margin:40px auto 0;
+    padding-top:20px;border-top:1px solid var(--gray-2);
+    font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--gray-3);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PIN GATE ============ -->
+<style>
+  #pin-gate{
+    position:fixed;inset:0;z-index:9999;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;
+  }
+  #pin-gate .box{text-align:center;max-width:480px;width:90%;padding:48px 32px;}
+  #pin-gate .brand{font-family:'Inter',sans-serif;font-weight:900;font-size:48px;letter-spacing:-0.04em;color:#000;margin-bottom:8px;}
+  #pin-gate .label{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#666;margin-bottom:32px;}
+  #pin-gate .msg{font-family:'Noto Sans JP',sans-serif;font-size:14px;color:#444;line-height:1.7;margin-bottom:28px;}
+  #pin-gate input{width:100%;padding:18px;font-size:24px;letter-spacing:.5em;text-align:center;border:1px solid #000;background:#fff;font-family:'Inter',sans-serif;font-weight:700;outline:none;box-sizing:border-box;}
+  #pin-gate input:focus{background:#fafafa;}
+  #pin-gate button{width:100%;margin-top:14px;padding:18px;background:#000;color:#fff;border:1px solid #000;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.3em;cursor:pointer;}
+  #pin-gate button:hover{background:#fff;color:#000;}
+  #pin-gate .err{margin-top:14px;font-size:13px;color:#c00;font-weight:700;min-height:18px;}
+  #pin-gate .footer{margin-top:32px;font-size:11px;letter-spacing:.2em;color:#aaa;}
+  body.locked{overflow:hidden;}
+  body.locked > nav,body.locked > section,body.locked > footer,body.locked > .sticky-cta{display:none !important;}
+</style>
+<div id="pin-gate">
+  <div class="box">
+    <div class="brand">V/AIBOU</div>
+    <div class="label">Internal Preview — Provisional</div>
+    <div class="msg">この資料は限定共有中の暫定版です。<br>アクセスには4桁の暗証番号が必要です。</div>
+    <form id="pin-form">
+      <input type="password" id="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="••••" autofocus>
+      <button type="submit">UNLOCK</button>
+      <div class="err" id="pin-err"></div>
+    </form>
+    <div class="footer">VAIZO INC. — VAIBOU PLATFORM</div>
+  </div>
+</div>
+<script>
+(function(){
+  const PIN = '0415';
+  const KEY = 'vaibou_lp_unlocked_v1';
+  const gate = document.getElementById('pin-gate');
+  const form = document.getElementById('pin-form');
+  const input = document.getElementById('pin');
+  const err = document.getElementById('pin-err');
+  function unlock(){document.body.classList.remove('locked');gate.style.display='none';}
+  document.body.classList.add('locked');
+  if(sessionStorage.getItem(KEY)==='yes'){unlock();return;}
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    if(input.value === PIN){sessionStorage.setItem(KEY,'yes');unlock();}
+    else {err.textContent = '暗証番号が違います';input.value='';input.focus();}
+  });
+})();
+</script>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">V/AIBOU</a>
+    <div class="nav-links">
+      <a href="#price" class="hide-mobile">料金</a>
+      <a href="#values" class="hide-mobile">価値</a>
+      <a href="#family" class="hide-mobile">ロール</a>
+      <a href="tel:000-0000-0000" class="hide-mobile">📞 お電話</a>
+      <a href="#cta" class="nav-cta">無料で試す</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta">VAIZO — V/AIBOU PLATFORM</div>
+    <h1 class="hero-logo">V/AIBOU</h1>
+    <div class="hero-reading">
+      <b>ヴァイボウ</b><span class="sep">／</span>愛称 <b>アイボウ</b>
+    </div>
+    <div class="hero-tagline">
+      <span class="hero-hl">東大・早慶の頭脳</span>と、<br>
+      <span class="hero-hl">専門家の実務能力</span>。<br>
+      病まない、休まない、辞めない。<br>
+      月額は、<span class="hero-hl">3万円</span>。
+    </div>
+    <div class="hero-tagline-en">YOUR PARTNER. YOUR BIBLE.</div>
+    <p class="hero-lead">
+      <strong>戦略を考える頭脳</strong>（東大早慶クラス）と、<br>
+      <strong>現場で手を動かす実務能力</strong>（その道のプロレベル）。<br>
+      本来、この両方を兼ね備えた人材は、採用市場では<strong>月300万円クラス</strong>。<br><br>
+      Web制作・広告運用・経理・広報・経営参謀…<br>
+      どの領域でも<strong>第一線のプロと同等の実務能力</strong>を持つAIスタッフが、<br>
+      24時間365日、休まず病まず、あなたの会社で働きます。<br>
+      合わなければ、翌月には入れ替えていい。<br>
+      それが、V/AIBOU が提案する、<strong>新しい"雇用"のかたち</strong>です。
+    </p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn btn-primary">無料で試してみる</a>
+      <a href="#price" class="btn btn-outline">料金を見る</a>
+    </div>
+    <div class="hero-contact">
+      <span><strong>お問い合わせ</strong></span>
+      <span>📞 <a href="tel:000-0000-0000">000-0000-0000</a></span>
+      <span class="dot">│</span>
+      <span>💬 <a href="https://line.me/R/ti/p/@vaizo" target="_blank">LINEで相談</a></span>
+      <span class="dot">│</span>
+      <span>✉️ <a href="mailto:info@vaizo.co.jp">info@vaizo.co.jp</a></span>
+    </div>
+    <div class="hero-subtag">経営者の相棒であり、経営のバイブル。</div>
+  </div>
+</section>
+
+<!-- PRICE / PLANS -->
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="label">Pricing Plans</div>
+    <h2 class="price-head">
+      採用市場なら<span style="text-decoration:line-through;color:#888;">月300万円</span>。<br>
+      V/AIBOUなら、月<em>3万円</em>から。
+    </h2>
+    <div class="plans-grid">
+
+      <!-- Plan 1: Start -->
+      <article class="plan-card">
+        <div class="plan-label">Start</div>
+        <h3 class="plan-name">AIスタッフ 1名</h3>
+        <p class="plan-sub">まずは1名から。東大・早慶の頭脳と、専門家の実務能力を持つAIスタッフを、お試しで雇ってみる。</p>
+        <div class="plan-price-row">
+          <span class="plan-yen">¥</span><span class="plan-amount">30,000</span><span class="plan-unit">/ 月</span>
+        </div>
+        <p class="plan-note">最低契約 3ヶ月・以降いつでも入れ替え／解雇OK</p>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li><strong>東大・早慶の頭脳＋専門家の実務能力</strong>のAIスタッフを<strong>1名</strong></li>
+          <li>24時間365日稼働／休まず、文句も言わず、病まない</li>
+          <li>チャットサポート</li>
+          <li>トークン上限 <strong>月1.5万円分</strong></li>
+          <li>無料体験：1万円分トークン付与</li>
+        </ul>
+        <div class="plan-bottom">
+          小さく始めて、効果を確かめてから広げる。<br>
+          2名目以降は<strong>無制限プラン</strong>へ切替可能。
+        </div>
+        <div class="plan-cta">
+          <a href="#cta" class="btn btn-primary btn-block">このプランで始める</a>
+        </div>
+      </article>
+
+      <!-- Plan 2: Unlimited (Recommended) -->
+      <article class="plan-card featured">
+        <div class="plan-badge">RECOMMENDED</div>
+        <div class="plan-label">Unlimited</div>
+        <h3 class="plan-name">AIスタッフ 無制限</h3>
+        <p class="plan-sub">何名雇っても月5万円フラット。人員の壁が、いまこの瞬間に無くなる。</p>
+        <div class="plan-price-row">
+          <span class="plan-yen">¥</span><span class="plan-amount">50,000</span><span class="plan-unit">/ 月</span>
+        </div>
+        <p class="plan-note">最低契約 3ヶ月・以降いつでも入れ替え／解雇OK</p>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>AIスタッフを<strong>何名でも</strong>雇用可</li>
+          <li>トークン上限到達時は<strong>5万円単位</strong>で追加チャージ（承認制）</li>
+          <li>業務自動化プロジェクトを必要な時に追加発注可</li>
+          <li><strong>随時のオンラインヒアリング</strong>サポート</li>
+        </ul>
+        <div class="plan-bottom">
+          通常運用はこのプラン。<br>
+          スタッフを増やしても料金は変わらない。
+        </div>
+        <div class="plan-cta">
+          <a href="#cta" class="btn btn-primary btn-block">このプランで始める</a>
+        </div>
+      </article>
+
+      <!-- Plan 3: Enterprise -->
+      <article class="plan-card">
+        <div class="plan-label">Enterprise</div>
+        <h3 class="plan-name">エンタープライズ</h3>
+        <p class="plan-sub">専用環境と優先サポートで、大規模運用を支える。</p>
+        <div class="plan-price-row">
+          <span class="plan-yen">¥</span><span class="plan-amount">500,000</span><span class="plan-unit">〜 / 月</span>
+        </div>
+        <p class="plan-note">詳細は別途お問い合わせ</p>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>AIスタッフ<strong>無制限</strong>雇用</li>
+          <li><strong>専用サーバー環境</strong></li>
+          <li>専任担当による優先サポート</li>
+          <li>SSO／SAML連携対応</li>
+        </ul>
+        <div class="plan-bottom">
+          インフラ・セキュリティ構築（SSO・SOC2・オンプレ・VPC等）は別途見積もり。
+        </div>
+        <div class="plan-cta">
+          <a href="#cta" class="btn btn-outline btn-block">相談する</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Add-ons -->
+    <div class="addons-block">
+      <div class="addons-label">Add-ons</div>
+      <h3 class="addons-title">月額プランに追加できるもの</h3>
+      <div class="addons-grid">
+        <div class="addon">
+          <div class="addon-kind">Spot Project</div>
+          <div class="addon-price">¥250,000<span>/ 1プロセス</span></div>
+          <p>業務自動化プロジェクト。ヒアリング → 提案 → 実装のワンセット。着手時一括・納期1ヶ月。実装後はAIスタッフとして常駐稼働。</p>
+        </div>
+        <div class="addon">
+          <div class="addon-kind">Token Top-up</div>
+          <div class="addon-price">¥50,000<span>/ 回</span></div>
+          <p>トークン追加チャージ。上限到達時、5万円単位で追加可能。顧客承認ダイアログを経て反映。</p>
+        </div>
+        <div class="addon">
+          <div class="addon-kind">Custom Flow</div>
+          <div class="addon-price addon-price-quote">別途見積</div>
+          <p>大規模業務フロー。複数プロセス連携・部門横断など、規模の大きい案件はお問い合わせください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INLINE CTA BAND -->
+<section class="cta-band">
+  <h3>まずは1人、雇ってみませんか。</h3>
+  <p>3ヶ月の最低契約のみ。合わなければ、翌月に入れ替えも解約もOK。</p>
+  <div class="btns">
+    <a href="#cta" class="btn btn-primary" style="background:#fff;color:#000;">無料で試してみる</a>
+    <a href="tel:000-0000-0000" class="btn btn-outline">📞 000-0000-0000</a>
+    <a href="https://line.me/R/ti/p/@vaizo" target="_blank" class="btn btn-line">💬 LINEで相談</a>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="label">Three Values</div>
+    <h2 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px, 2.4vw, 36px);font-weight:700;letter-spacing:.04em;line-height:1.5;max-width:900px;">
+      便利なツールじゃない。<br>チーム戦で戦う、次世代の組織OS。
+    </h2>
+    <div class="values-grid">
+      <div class="value">
+        <div class="value-num">01 — ROLE</div>
+        <h3>実務の代行</h3>
+        <p>Web制作・広告運用・経理・広報・参謀…必要なロールを月5万円から雇える。24時間稼働、いつでも解約できる安心感。</p>
+      </div>
+      <div class="value">
+        <div class="value-num">02 — OS</div>
+        <h3>前提情報の流通</h3>
+        <p>「上が何を考えてるか分からない」「現場の実態が見えない」を解消する組織OS。各レイヤーに共通前提を薄く付与する。</p>
+      </div>
+      <div class="value">
+        <div class="value-num">03 — INSIGHT</div>
+        <h3>観点の提示</h3>
+        <p>「次の一手」「見落とし」を能動的に提案するチーム戦AI。個人戦のChatGPT／Copilotと土俵を分ける。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section class="family" id="family">
+  <div class="wrap">
+    <div class="label">The Family</div>
+    <h2 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px, 2.4vw, 36px);font-weight:700;letter-spacing:.04em;line-height:1.5;margin-bottom:28px;">
+      "V/" は、VAIZOディレクトリ。<br>すべてのAIスタッフが、この傘の下に並ぶ。
+    </h2>
+    <p class="family-intro">
+      <b>V/AIBOU</b> はプラットフォーム本体。その下に、ロールごとのAIスタッフが並ぶ。<br>
+      必要なロールだけ雇って、組織を設計できる。
+    </p>
+
+    <div class="family-list">
+      <div class="family-row">
+        <div class="family-logo">V/AIBOU</div>
+        <div class="family-desc"><b>プラットフォーム本体</b>。AI社員ロールを統合する組織OS。認証・権限・前提情報の流通を担う。</div>
+        <div class="family-tier">PLATFORM</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo">V/SANBO</div>
+        <div class="family-desc"><b>参謀ロール</b>。経営・戦略レイヤー。記憶・能動的接触・観点提示を担う。</div>
+        <div class="family-tier">PREMIUM・10〜30万</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo">V/ENTER</div>
+        <div class="family-desc"><b>Web制作ロール</b>。サイト構築・改善を担う。</div>
+        <div class="family-tier">STANDARD・5〜10万</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo">V/SEARCH</div>
+        <div class="family-desc"><b>検索広告ロール</b>。Google・Yahoo検索広告のキーワード最適化、入札調整、コピー生成を担う。</div>
+        <div class="family-tier">STANDARD・5〜10万</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo">V/HOJOKIN</div>
+        <div class="family-desc"><b>補助金ロール</b>。中小企業向け補助金の情報収集、事業計画書ドラフト、申請書類作成を担う。省力化投資補助金・ものづくり補助金・持続化補助金等に対応。</div>
+        <div class="family-tier">STANDARD・5〜10万</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo" style="color:var(--gray-3);">V/KOHO</div>
+        <div class="family-desc">広報ロール（準備中）。お知らせ更新・SNS投稿を担う。</div>
+        <div class="family-tier" style="color:var(--gray-3);border-color:var(--gray-3);">COMING</div>
+      </div>
+      <div class="family-row">
+        <div class="family-logo" style="color:var(--gray-3);">V/KEIRI</div>
+        <div class="family-desc">経理ロール（準備中）。数値整理・督促を担う。</div>
+        <div class="family-tier" style="color:var(--gray-3);border-color:var(--gray-3);">COMING</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE -->
+<section class="future" id="future">
+  <div class="wrap">
+    <div class="label">The Future</div>
+    <h2 class="future-statement">
+      組織のサイズとケーパビリティの、<br>リンクが、切れる。
+    </h2>
+    <div class="future-table">
+      <div class="key">産業革命</div>
+      <div class="value">肉体労働の解放</div>
+      <div class="key">IT革命</div>
+      <div class="value">情報の物理制約の解放</div>
+      <div class="key highlight">AI革命（V/AIBOU）</div>
+      <div class="value highlight">「組織を持つ」制約そのものの解放</div>
+    </div>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(16px, 1.3vw, 19px);font-weight:300;line-height:1.9;color:#aaa;max-width:760px;margin-top:56px;">
+      社長 + AI社員 = 3億円企業。組織を大きくせずに事業をスケールできる時代が来る。
+      その先にあるのは、人類が「生きるためのシゴト」から解放され、「スキ」に没頭できる社会。<br>
+      V/AIBOU はその装置。
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="label" style="justify-content:center;">Pre-Launch</div>
+      <h2>まもなく公開。<br>ローンチの最前列、取りませんか。</h2>
+      <p>
+        V/AIBOU は現在開発中。事前登録いただいた方に、先行体験・先行価格のご案内をお送りします。
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:info@vaizo.co.jp?subject=VAIBOU事前登録" class="btn btn-primary">無料で試してみる</a>
+        <a href="tel:000-0000-0000" class="btn btn-outline">📞 000-0000-0000</a>
+        <a href="https://line.me/R/ti/p/@vaizo" target="_blank" class="btn btn-line">💬 LINEで相談</a>
+      </div>
+      <p style="margin-top:24px;font-size:13px;color:var(--gray-3);">
+        平日 9:00〜19:00　／　メール：<a href="mailto:info@vaizo.co.jp" style="color:var(--black);">info@vaizo.co.jp</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">V/AIBOU</div>
+      <div class="footer-meta">
+        経営者の相棒であり、経営のバイブル。<br>
+        株式会社VAIZO — vaizo.co.jp<br>
+        info@vaizo.co.jp
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#values">価値</a>
+      <a href="#family">ロール</a>
+      <a href="#future">未来</a>
+      <a href="#cta">事前登録</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <div>© 2026 VAIZO Inc. — V/AIBOU Platform</div>
+    <div>vaibou.com ／ vaizo.co.jp</div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-inner">
+    <a href="tel:000-0000-0000" class="btn btn-outline">📞</a>
+    <a href="https://line.me/R/ti/p/@vaizo" target="_blank" class="btn btn-line">💬 LINE</a>
+    <a href="#cta" class="btn btn-primary">無料で試す</a>
+  </div>
+</div>
+
+</body>
+</html>
