@@ -96,28 +96,26 @@
     letter-spacing:-0.06em;line-height:1;
     color:rgba(0,0,0,0.035);
     pointer-events:none;user-select:none;
-    animation:hero-watermark-float 14s ease-in-out infinite;
-    z-index:0;
+    transform:translate3d(var(--hero-wm-x, 0px), var(--hero-wm-y, 0px), 0);
+    transition:transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index:0;will-change:transform;
   }
   .hero::after{
     content:"";position:absolute;
     top:62%;left:-10%;width:130%;height:2px;
     background:var(--orange);
     opacity:0.18;
-    transform:rotate(-14deg);transform-origin:center;
-    pointer-events:none;
-    animation:hero-slash-drift 22s linear infinite;
-    z-index:0;
+    transform:rotate(-14deg) translate3d(var(--hero-slash-x, 0px), var(--hero-slash-y, 0px), 0);
+    transform-origin:center;
+    transition:transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events:none;z-index:0;will-change:transform;
   }
   .hero > .wrap{position:relative;z-index:1;}
-  @keyframes hero-watermark-float{
-    0%,100%{transform:translate(0,0) rotate(0deg);}
-    50%{transform:translate(-28px,-14px) rotate(-0.6deg);}
-  }
-  @keyframes hero-slash-drift{
-    0%{transform:rotate(-14deg) translateX(0);}
-    50%{transform:rotate(-14deg) translateX(-30px);}
-    100%{transform:rotate(-14deg) translateX(0);}
+  /* グラデーションの焦点もマウスに追従 */
+  .hero{
+    --hero-grad-x: 85%;
+    --hero-grad-y: 15%;
+    transition: background-position 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   /* Scroll hint */
@@ -2396,6 +2394,36 @@
       const isOpen = item.classList.toggle('open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+  });
+})();
+</script>
+
+<!-- HERO MOUSE PARALLAX -->
+<script>
+(function(){
+  if(window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+  const hero = document.querySelector('.hero');
+  if(!hero) return;
+  let raf = null;
+  hero.addEventListener('mousemove', e => {
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      // Watermark: 強め (逆方向)
+      hero.style.setProperty('--hero-wm-x', `${-x * 55}px`);
+      hero.style.setProperty('--hero-wm-y', `${-y * 35}px`);
+      // Slash: 中 (逆方向)
+      hero.style.setProperty('--hero-slash-x', `${-x * 28}px`);
+      hero.style.setProperty('--hero-slash-y', `${-y * 14}px`);
+    });
+  });
+  hero.addEventListener('mouseleave', () => {
+    hero.style.setProperty('--hero-wm-x', '0px');
+    hero.style.setProperty('--hero-wm-y', '0px');
+    hero.style.setProperty('--hero-slash-x', '0px');
+    hero.style.setProperty('--hero-slash-y', '0px');
   });
 })();
 </script>
