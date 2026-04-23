@@ -169,8 +169,15 @@
     max-width:1100px;
   }
   .hero-hl{
-    background:var(--black);color:var(--white);
-    padding:0 14px;display:inline-block;
+    position:relative;display:inline-block;
+    padding:0 14px;
+    background:transparent;color:var(--black);
+    z-index:1;
+  }
+  .hero-hl::before{
+    content:"";position:absolute;inset:0;
+    background:var(--black);z-index:-1;
+    transform:scaleX(0);transform-origin:left center;
   }
   .hero-subtag{
     margin-top:40px;
@@ -1344,15 +1351,32 @@
       100%{clip-path:inset(0 0 0 0);opacity:1;}
     }
 
-    /* Highlight bars morph in */
+    /* Marker: 黒マーカーが後から書き込まれて文字白反転 */
+    .hero-tagline .hero-hl::before{
+      animation:marker-fill 0.6s cubic-bezier(0.77,0,0.175,1) forwards;
+    }
     .hero-tagline .hero-hl{
-      position:relative;display:inline-block;
-      background:transparent;color:var(--black);
-      transition:background 0.5s ease 0.3s, color 0.5s ease 0.3s;
+      animation:marker-text 0.4s linear forwards;
     }
-    .hero-tagline .hero-line.hl-ready .hero-hl{
-      background:var(--black);color:var(--white);
+    @keyframes marker-fill{
+      0%{transform:scaleX(0);}
+      100%{transform:scaleX(1);}
     }
+    @keyframes marker-text{
+      0%, 55%{color:var(--black);}
+      100%{color:var(--white);}
+    }
+    /* per-line delays: wipe終わりの少し前からマーカーが書かれる */
+    .hero-tagline .hero-line:nth-of-type(1) .hero-hl,
+    .hero-tagline .hero-line:nth-of-type(1) .hero-hl::before{animation-delay:1.75s;}
+    .hero-tagline .hero-line:nth-of-type(2) .hero-hl,
+    .hero-tagline .hero-line:nth-of-type(2) .hero-hl::before{animation-delay:2.00s;}
+    .hero-tagline .hero-line:nth-of-type(3) .hero-hl,
+    .hero-tagline .hero-line:nth-of-type(3) .hero-hl::before{animation-delay:2.30s;}
+    .hero-tagline .hero-line:nth-of-type(4) .hero-hl,
+    .hero-tagline .hero-line:nth-of-type(4) .hero-hl::before{animation-delay:2.65s;}
+    body.intro-active .hero-tagline .hero-hl,
+    body.intro-active .hero-tagline .hero-hl::before{animation-play-state:paused;}
 
     .hero .hero-cta{
       opacity:0;transform:translateY(18px) scale(0.95);
