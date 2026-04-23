@@ -18,6 +18,8 @@
   :root{
     --black:#000;
     --white:#fff;
+    --orange:#e67e22;
+    --orange-dark:#c56812;
     --gray-1:#fafafa;
     --gray-2:#e5e5e5;
     --gray-3:#888;
@@ -56,9 +58,10 @@
     color:var(--black);text-decoration:none;font-weight:400;
   }
   .nav-cta{
-    padding:10px 20px;background:var(--black);color:var(--white) !important;
+    padding:10px 20px;background:var(--orange);color:var(--white) !important;
     font-weight:700;letter-spacing:.15em;
   }
+  .nav-cta:hover{background:var(--orange-dark);}
   @media(max-width:768px){
     .nav-links .hide-mobile{display:none;}
   }
@@ -132,8 +135,8 @@
     font-size:14px;font-weight:700;letter-spacing:.2em;text-decoration:none;
     border:1px solid var(--black);transition:all .2s;cursor:pointer;
   }
-  .btn-primary{background:var(--black);color:var(--white);}
-  .btn-primary:hover{background:var(--white);color:var(--black);}
+  .btn-primary{background:var(--orange);color:var(--white);border-color:var(--orange);}
+  .btn-primary:hover{background:var(--orange-dark);border-color:var(--orange-dark);color:var(--white);}
   .btn-outline{background:var(--white);color:var(--black);}
   .btn-outline:hover{background:var(--black);color:var(--white);}
   .btn-line{background:var(--black);color:var(--white);border-color:var(--black);}
@@ -428,6 +431,71 @@
     color:#aaa;
   }
 
+  /* ===== VOLUME (月の処理能力) ===== */
+  .volume{
+    background:var(--white);
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+  }
+  .volume-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.2vw, 60px);font-weight:900;letter-spacing:.02em;line-height:1.3;
+    margin-bottom:20px;color:var(--black);
+  }
+  .volume-head em{font-style:normal;color:var(--orange);}
+  .volume-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.4vw, 20px);font-weight:400;line-height:1.85;color:var(--gray-4);
+    max-width:720px;margin-bottom:56px;
+  }
+  .volume-grid{
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:0;
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  @media(max-width:840px){.volume-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.volume-grid{grid-template-columns:1fr;}}
+  .volume-item{
+    padding:32px 28px 32px 0;
+    border-right:1px solid var(--gray-2);
+  }
+  .volume-item:nth-child(3n){border-right:none;padding-right:0;}
+  .volume-item:not(:nth-child(3n+1)){padding-left:28px;}
+  .volume-item:nth-child(n+4){border-top:1px solid var(--gray-2);}
+  @media(max-width:840px){
+    .volume-item{border-right:none;padding:28px 20px !important;border-right:1px solid var(--gray-2);}
+    .volume-item:nth-child(2n){border-right:none;}
+    .volume-item:nth-child(n+3){border-top:1px solid var(--gray-2);}
+  }
+  @media(max-width:520px){
+    .volume-item{border-right:none !important;padding:26px 0 !important;}
+    .volume-item:not(:first-child){border-top:1px solid var(--gray-2);}
+  }
+  .volume-num{
+    font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(36px, 4vw, 52px);
+    letter-spacing:-0.03em;line-height:1;color:var(--black);margin-bottom:10px;
+  }
+  .volume-num span{
+    font-size:0.45em;font-weight:700;margin-left:4px;letter-spacing:.05em;color:var(--gray-4);
+  }
+  .volume-label{
+    font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:14px;letter-spacing:.03em;
+    color:var(--black);line-height:1.6;
+  }
+  .volume-callout{
+    margin-top:40px;padding:36px 40px;
+    background:var(--black);color:var(--white);
+    display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between;
+  }
+  .volume-callout-text{
+    font-family:'Noto Sans JP',sans-serif;font-weight:700;
+    font-size:clamp(17px, 1.6vw, 22px);letter-spacing:.03em;line-height:1.5;color:var(--white);
+  }
+  .volume-callout-text em{font-style:normal;color:var(--orange);font-weight:900;}
+  .volume-note{
+    margin-top:20px;
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:11px;font-weight:300;color:var(--gray-3);line-height:1.7;
+  }
+
   /* ===== PRICE SHOCK ===== */
   .price{
     background:var(--gray-1);
@@ -466,7 +534,7 @@
   .plan-card.featured .plan-features li{border-bottom-color:#333;}
   .plan-badge{
     position:absolute;top:-1px;right:24px;
-    background:var(--white);color:var(--black);
+    background:var(--orange);color:var(--white);
     font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:.25em;
     padding:8px 14px;
   }
@@ -1463,6 +1531,50 @@
   </div>
 </section>
 
+<!-- VOLUME (月の処理能力) -->
+<section class="volume" id="volume">
+  <div class="wrap">
+    <div class="label">Capacity</div>
+    <h2 class="volume-head">月<em>5万円</em>で、<br>これだけ使えます。</h2>
+    <p class="volume-sub">1ヶ月にこなせる仕事量の目安。現実の運用では使い切れないほどの余裕があります。</p>
+
+    <div class="volume-grid">
+      <div class="volume-item">
+        <div class="volume-num">69,000<span>本</span></div>
+        <div class="volume-label">SNS投稿文の作成</div>
+      </div>
+      <div class="volume-item">
+        <div class="volume-num">12,600<span>通</span></div>
+        <div class="volume-label">提案書・メールドラフト</div>
+      </div>
+      <div class="volume-item">
+        <div class="volume-num">6,900<span>件</span></div>
+        <div class="volume-label">議事録要約（1時間会議）</div>
+      </div>
+      <div class="volume-item">
+        <div class="volume-num">1,320<span>本</span></div>
+        <div class="volume-label">10ページのスライド資料</div>
+      </div>
+      <div class="volume-item">
+        <div class="volume-num">960<span>通</span></div>
+        <div class="volume-label">月次報告書の作成</div>
+      </div>
+      <div class="volume-item">
+        <div class="volume-num">115<span>回</span></div>
+        <div class="volume-label">経営戦略の壁打ち（10往復対話）</div>
+      </div>
+    </div>
+
+    <div class="volume-callout">
+      <div class="volume-callout-text">
+        <em>文庫本 約370冊分</em>を読み込みながら動く、<br>処理能力です。
+      </div>
+    </div>
+
+    <p class="volume-note">※ Unlimitedプラン（月5万円）の標準利用枠内での目安。業務の複雑度・文書量により変動します。</p>
+  </div>
+</section>
+
 <!-- BEFORE / AFTER -->
 <section class="ba" id="before-after">
   <div class="wrap">
@@ -1800,7 +1912,7 @@
   <h3>まずは1人、雇ってみませんか。</h3>
   <p>3ヶ月の最低契約のみ。合わなければ、翌月に入れ替えも解約もOK。</p>
   <div class="btns">
-    <a href="#cta" class="btn btn-primary" style="background:#fff;color:#000;">無料で試してみる</a>
+    <a href="#cta" class="btn btn-primary">無料で試してみる</a>
   </div>
 </section>
 
@@ -2110,8 +2222,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .security-head, .security-sub, .support-head, .support-sub, .support-summary, .support-closing, .faq-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .case-grid, .support-timeline, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .volume-head, .volume-sub, .volume-callout, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .security-head, .security-sub, .support-head, .support-sub, .support-summary, .support-closing, .faq-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .volume-grid, .ba-grid, .why-grid, .case-grid, .support-timeline, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
