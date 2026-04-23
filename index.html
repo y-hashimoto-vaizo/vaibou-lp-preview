@@ -177,7 +177,7 @@
   .plan-card.featured .btn-primary:hover{background:transparent;color:var(--white);}
   .plan-card:not(.featured) .plan-cta .btn-primary{background:var(--black);color:var(--white);}
 
-  /* FAQ */
+  /* FAQ (accordion) */
   .faq{background:var(--white);}
   .faq-intro{
     font-family:'Noto Sans JP',sans-serif;
@@ -188,30 +188,73 @@
     border-top:1px solid var(--black);border-bottom:1px solid var(--black);
   }
   .faq-item{
-    padding:36px 0;
     border-top:1px solid #d9d9d9;
-    display:grid;grid-template-columns:minmax(200px, 360px) 1fr;gap:60px;
   }
   .faq-item:first-child{border-top:none;}
-  @media(max-width:840px){
-    .faq-item{grid-template-columns:1fr;gap:14px;padding:28px 0;}
-  }
   .faq-q{
+    width:100%;
+    background:none;border:none;cursor:pointer;
+    padding:28px 0;
+    display:flex;align-items:center;gap:20px;
+    text-align:left;color:inherit;
+    font:inherit;
+    transition:opacity .2s ease;
+  }
+  .faq-q:hover{opacity:.7;}
+  .faq-num{
+    flex-shrink:0;
+    font-family:'Inter',sans-serif;font-weight:900;font-size:14px;letter-spacing:.14em;
+    color:var(--black);min-width:48px;
+  }
+  .faq-text{
+    flex:1;
     font-family:'Noto Sans JP',sans-serif;
-    font-size:clamp(18px, 1.8vw, 22px);font-weight:700;letter-spacing:.03em;line-height:1.5;
+    font-size:clamp(17px, 1.6vw, 22px);font-weight:700;letter-spacing:.03em;line-height:1.5;
     color:var(--black);
-    display:flex;gap:14px;align-items:flex-start;
   }
-  .faq-q .qmark{
-    font-family:'Inter',sans-serif;font-weight:900;font-size:18px;
-    letter-spacing:.1em;color:var(--black);flex-shrink:0;
-    padding-top:2px;
+  .faq-toggle{
+    flex-shrink:0;position:relative;
+    width:22px;height:22px;
   }
+  .faq-toggle::before,.faq-toggle::after{
+    content:"";position:absolute;top:50%;left:50%;
+    background:var(--black);
+    transition:transform .45s cubic-bezier(0.77,0,0.175,1);
+  }
+  .faq-toggle::before{
+    width:22px;height:1.5px;transform:translate(-50%,-50%);
+  }
+  .faq-toggle::after{
+    width:1.5px;height:22px;transform:translate(-50%,-50%);
+  }
+  .faq-item.open .faq-toggle::after{
+    transform:translate(-50%,-50%) scaleY(0);
+  }
+
   .faq-a{
+    display:grid;grid-template-rows:0fr;
+    transition:grid-template-rows .5s cubic-bezier(0.77,0,0.175,1);
+  }
+  .faq-a > .faq-a-inner{
+    overflow:hidden;min-height:0;
+  }
+  .faq-a-body{
+    padding:0 0 28px 68px;
     font-family:'Noto Sans JP',sans-serif;
     font-size:15px;font-weight:300;line-height:1.95;color:var(--gray-4);
+    opacity:0;transform:translateY(-4px);
+    transition:opacity .4s cubic-bezier(0.22,1,0.36,1) .1s, transform .4s cubic-bezier(0.22,1,0.36,1) .1s;
   }
-  .faq-a strong{font-weight:700;color:var(--black);}
+  .faq-item.open .faq-a{
+    grid-template-rows:1fr;
+  }
+  .faq-item.open .faq-a-body{opacity:1;transform:translateY(0);}
+  .faq-a-body strong{font-weight:700;color:var(--black);}
+  @media(max-width:640px){
+    .faq-q{gap:14px;padding:22px 0;}
+    .faq-num{font-size:12px;min-width:42px;}
+    .faq-a-body{padding-left:56px;padding-bottom:22px;}
+  }
 
   /* Sticky mobile CTA */
   .sticky-cta{
@@ -1565,34 +1608,92 @@
 
     <div class="faq-list">
 
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.01</span>本当にAIだけで回る？</div>
-        <div class="faq-a">重要な判断は人間が最終決定。AIは9割の作業を代行し、承認範囲はロール単位で調整可。</div>
+      <div class="faq-item open">
+        <button class="faq-q" type="button" aria-expanded="true">
+          <span class="faq-num">Q.01</span>
+          <span class="faq-text">本当にAIだけで仕事が回る？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          重要な判断は<strong>必ず人間が最終決定</strong>する設計です。AIは9割の作業を代行し、あなたは「判断」と「承認」に集中できる。ロール設定で承認範囲は細かく調整可能です。
+        </div></div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.02</span>うちの業種でも使える？</div>
-        <div class="faq-a">業務カテゴリで設計しているため、業種は問いません。初回ヒアリングで最適なロールを提案します。</div>
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.02</span>
+          <span class="faq-text">小さい会社でも意味がある？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          むしろ、<strong>社員5〜30名の会社こそ</strong>1社員分の人件費すら惜しい中で、V/AIBOUが即戦力になります。月3万円から始められ、1つの業務自動化で全員の働き方が変わります。
+        </div></div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.03</span>解約は本当にいつでも？</div>
-        <div class="faq-a">最低契約3ヶ月のみ。以降は管理画面のボタン1つで解約・入れ替えOK。違約金なし。</div>
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.03</span>
+          <span class="faq-text">ChatGPTを社員に配るのとどう違う？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          ChatGPTを10人に配ると、10個のバラバラな文脈が生まれます。<strong>V/AIBOUは全員が会社の方針・戦略・暗黙知を共有した状態</strong>で動く。AI同士も文脈を共有します。
+        </div></div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.04</span>情報漏洩は？</div>
-        <div class="faq-a">暗号化保管・AI学習利用なし・他社と完全分離。機密フォルダは読込ON/OFFをトグルで切替可。</div>
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.04</span>
+          <span class="faq-text">自社でAIエンジニアを雇うのと比べて？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          AIエンジニアの採用は年800〜1,100万円。<strong>V/AIBOUは年36万円から</strong>。同一コンテクスト共有・複数ロール・管理画面まで自社構築と比べて、導入も運用もはるかに早く・軽く済みます。
+        </div></div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.05</span>成果が出なかったら？</div>
-        <div class="faq-a">導入時に成果指標を一緒に定義、月次レビュー。3ヶ月で手応えがなければ設計見直しを無料で伴走。</div>
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.05</span>
+          <span class="faq-text">解約は本当にいつでも？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          <strong>最低契約3ヶ月のみ。</strong>以降は管理画面のボタン1つで解約・入れ替えOK。年契約・違約金・複雑な手続きは一切ありません。
+        </div></div></div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.06</span>誰が運用管理するの？</div>
-        <div class="faq-a">VAIZOが一元管理。情報システム部がなくても導入可能です。</div>
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.06</span>
+          <span class="faq-text">情報漏洩は？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          データは暗号化保管、<strong>AI学習利用なし</strong>、他社と完全分離。機密フォルダは読込ON/OFFをトグルで切替可。エンタープライズではSSO・SOC2準拠オプションも提供。
+        </div></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.07</span>
+          <span class="faq-text">成果が出なかったら？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          導入時に成果指標を一緒に定義し、月次レビューで可視化。<strong>3ヶ月で手応えがなければ設計見直しを無料で伴走</strong>します。
+        </div></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="faq-num">Q.08</span>
+          <span class="faq-text">誰が運用管理する？</span>
+          <span class="faq-toggle"></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-body">
+          <strong>VAIZOが一元管理</strong>。情報システム部を持たない中小企業でも、運用負荷ゼロで導入可能です。
+        </div></div></div>
       </div>
 
     </div>
@@ -1641,6 +1742,19 @@
     <div>vaibou.com ／ vaizo.co.jp</div>
   </div>
 </footer>
+
+<!-- FAQ ACCORDION -->
+<script>
+(function(){
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+})();
+</script>
 
 <!-- SCROLL REVEAL -->
 <script>
