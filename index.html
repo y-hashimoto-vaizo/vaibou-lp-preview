@@ -521,6 +521,68 @@
     font-size:15px;font-weight:300;line-height:1.9;color:var(--gray-4);
   }
 
+  /* ===== BEFORE / AFTER ===== */
+  .ba{
+    background:var(--white);
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+  }
+  .ba-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(32px, 4.2vw, 60px);font-weight:900;letter-spacing:.02em;line-height:1.3;
+    margin-bottom:20px;color:var(--black);
+  }
+  .ba-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.4vw, 20px);font-weight:400;line-height:1.85;color:var(--gray-4);
+    max-width:720px;margin-bottom:56px;
+  }
+  .ba-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;
+  }
+  @media(max-width:980px){.ba-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.ba-grid{grid-template-columns:1fr;}}
+  .ba-card{
+    background:var(--white);border:1px solid var(--black);
+    padding:28px 26px;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .ba-task{
+    font-family:'Noto Sans JP',sans-serif;
+    font-weight:700;font-size:17px;letter-spacing:.03em;color:var(--black);
+    padding-bottom:16px;border-bottom:1px solid var(--gray-2);
+  }
+  .ba-compare{
+    display:flex;align-items:center;gap:12px;
+  }
+  .ba-col{flex:1;min-width:0;}
+  .ba-col-label{
+    font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.3em;
+    color:var(--gray-3);text-transform:uppercase;margin-bottom:6px;
+  }
+  .ba-before-time{
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:24px;font-weight:500;color:var(--gray-3);
+    text-decoration:line-through;text-decoration-thickness:1.5px;line-height:1.1;
+  }
+  .ba-after-time{
+    font-family:'Inter','Noto Sans JP',sans-serif;
+    font-size:32px;font-weight:900;color:var(--black);letter-spacing:-0.02em;line-height:1.1;
+  }
+  .ba-arrow{
+    font-family:'Inter',sans-serif;font-size:22px;font-weight:300;color:var(--gray-3);
+    flex-shrink:0;
+  }
+  .ba-badge{
+    align-self:flex-start;
+    font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:-0.02em;
+    color:var(--black);padding:6px 12px;border:1px solid var(--black);
+  }
+  .ba-note{
+    margin-top:40px;
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:11px;font-weight:300;color:var(--gray-3);line-height:1.7;
+  }
+
   /* ===== CATALOG (AI社員カタログ) ===== */
   .family{
     background:var(--gray-1);
@@ -1076,6 +1138,117 @@
   </div>
 </section>
 
+<!-- BEFORE / AFTER -->
+<section class="ba" id="before-after">
+  <div class="wrap">
+    <div class="label">Before / After</div>
+    <h2 class="ba-head">実際にどれくらい変わる？</h2>
+    <p class="ba-sub">「時短しました」では伝わらない。具体的な数字で、日常がどう変わるかを見せます。</p>
+
+    <div class="ba-grid">
+
+      <div class="ba-card">
+        <div class="ba-task">事業計画書の作成</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">3日</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">1時間</div>
+          </div>
+        </div>
+        <div class="ba-badge">-97%</div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-task">公式Webサイト構築</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">1ヶ月</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">1日</div>
+          </div>
+        </div>
+        <div class="ba-badge">-96%</div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-task">会議議事録・要約</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">30分/回</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">自動</div>
+          </div>
+        </div>
+        <div class="ba-badge">-100%</div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-task">営業リスト作成</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">半日</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">15分</div>
+          </div>
+        </div>
+        <div class="ba-badge">-94%</div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-task">競合分析レポート</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">1週間</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">3時間</div>
+          </div>
+        </div>
+        <div class="ba-badge">-94%</div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-task">月次業績サマリー</div>
+        <div class="ba-compare">
+          <div class="ba-col">
+            <div class="ba-col-label">Before</div>
+            <div class="ba-before-time">1日</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-col">
+            <div class="ba-col-label">After</div>
+            <div class="ba-after-time">30分</div>
+          </div>
+        </div>
+        <div class="ba-badge">-94%</div>
+      </div>
+
+    </div>
+
+    <p class="ba-note">※ VAIZO自社運用データおよびモデルケースに基づく目安。実際の効果は業務内容・既存体制により変動します。</p>
+  </div>
+</section>
+
 <!-- INLINE CTA BAND -->
 <section class="cta-band">
   <h3>まずは1人、雇ってみませんか。</h3>
@@ -1292,8 +1465,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .faq-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .faq-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
