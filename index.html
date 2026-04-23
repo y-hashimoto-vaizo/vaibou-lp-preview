@@ -476,7 +476,11 @@
   .addon{border-top:1px solid var(--black);padding-top:16px;}
   .addon-kind{
     font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:.25em;
-    color:var(--gray-3);text-transform:uppercase;margin-bottom:8px;
+    color:var(--gray-3);text-transform:uppercase;margin-bottom:6px;
+  }
+  .addon-name{
+    font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:20px;
+    letter-spacing:.02em;color:var(--black);margin-bottom:14px;line-height:1.3;
   }
   .addon-price{
     font-family:'Inter',sans-serif;font-weight:900;font-size:32px;letter-spacing:-0.02em;line-height:1;
@@ -1051,18 +1055,21 @@
       <div class="addons-grid">
         <div class="addon">
           <div class="addon-kind">Spot Project</div>
-          <div class="addon-price">¥250,000<span>/ 1プロセス</span></div>
-          <p>業務自動化プロジェクト。納期1ヶ月。</p>
+          <h4 class="addon-name">スポット開発</h4>
+          <div class="addon-price">¥250,000<span>/ 自動化プロセス 1単位</span></div>
+          <p>業務を「1単位ずつ」発注する方式。着手から1ヶ月で完成し、AIスタッフに常駐します。</p>
         </div>
         <div class="addon">
           <div class="addon-kind">Usage Top-up</div>
+          <h4 class="addon-name">利用枠の追加</h4>
           <div class="addon-price">¥50,000<span>/ 回</span></div>
-          <p>利用枠を追加チャージ。</p>
+          <p>月の利用枠を使い切った時に。承認制で追加。</p>
         </div>
         <div class="addon">
           <div class="addon-kind">Custom Flow</div>
-          <div class="addon-price addon-price-quote">別途見積</div>
-          <p>大規模・部門横断案件。</p>
+          <h4 class="addon-name">カスタム開発</h4>
+          <div class="addon-price addon-price-quote">別途お見積</div>
+          <p>複数部門・大規模案件向け。ヒアリング後に個別見積。</p>
         </div>
       </div>
     </div>
