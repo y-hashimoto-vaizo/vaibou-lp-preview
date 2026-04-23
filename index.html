@@ -1306,41 +1306,87 @@
     .reveal-stagger.in-view > *:nth-child(7){transition-delay:540ms;}
     .reveal-stagger.in-view > *:nth-child(8){transition-delay:630ms;}
 
-    /* Hero entrance after intro */
-    .hero .hero-logo,
-    .hero .hero-tagline > br + span.hero-hl,
-    .hero .hero-tagline,
-    .hero .hero-cta{
-      opacity:0;transform:translateY(18px);
-      animation:hero-in 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+    /* Hero entrance — dramatic multi-stage */
+    .hero .hero-logo{animation:none;opacity:1;transform:none;}
+    .hero-logo .l{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(-100px) rotate(-10deg) scale(0.85);
+      animation:logo-drop 0.85s cubic-bezier(0.34,1.56,0.64,1) forwards;
     }
+    .hero-logo .l:nth-of-type(1){animation-delay:0.18s;}
+    .hero-logo .l:nth-of-type(2){animation-delay:0.26s;}
+    .hero-logo .l:nth-of-type(3){animation-delay:0.34s;}
+    .hero-logo .l:nth-of-type(4){animation-delay:0.42s;}
+    .hero-logo .l:nth-of-type(5){animation-delay:0.50s;}
+    .hero-logo .l:nth-of-type(6){animation-delay:0.58s;}
+    .hero-logo .l:nth-of-type(7){animation-delay:0.66s;}
+    @keyframes logo-drop{
+      0%{opacity:0;transform:translateY(-100px) rotate(-10deg) scale(0.85);}
+      60%{opacity:1;}
+      100%{opacity:1;transform:translateY(0) rotate(0) scale(1);}
+    }
+
+    .hero-tagline{animation:none;opacity:1;transform:none;}
     .hero-tagline .hero-line{
       display:inline-block;
-      opacity:0;transform:translateY(14px);
-      animation:hero-line-in 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+      clip-path:inset(0 101% 0 0);
+      opacity:0;
+      animation:line-wipe 0.95s cubic-bezier(0.77,0,0.175,1) forwards;
     }
-    body.intro-active .hero .hero-logo,
-    body.intro-active .hero .hero-tagline,
+    .hero-tagline .hero-line:nth-of-type(1){animation-delay:0.95s;}
+    .hero-tagline .hero-line:nth-of-type(2){animation-delay:1.20s;}
+    .hero-tagline .hero-line:nth-of-type(3){animation-delay:1.45s;}
+    .hero-tagline .hero-line:nth-of-type(4){animation-delay:1.75s;}
+    @keyframes line-wipe{
+      0%{clip-path:inset(0 101% 0 0);opacity:0;}
+      20%{opacity:1;}
+      100%{clip-path:inset(0 0 0 0);opacity:1;}
+    }
+
+    /* Highlight bars morph in */
+    .hero-tagline .hero-hl{
+      position:relative;display:inline-block;
+      background:transparent;color:var(--black);
+      transition:background 0.5s ease 0.3s, color 0.5s ease 0.3s;
+    }
+    .hero-tagline .hero-line.hl-ready .hero-hl{
+      background:var(--black);color:var(--white);
+    }
+
+    .hero .hero-cta{
+      opacity:0;transform:translateY(18px) scale(0.95);
+      animation:cta-in 0.8s cubic-bezier(0.34,1.56,0.64,1) 2.6s forwards;
+    }
+    @keyframes cta-in{to{opacity:1;transform:translateY(0) scale(1);}}
+
+    body.intro-active .hero-logo .l,
+    body.intro-active .hero-tagline .hero-line,
     body.intro-active .hero .hero-cta,
-    body.intro-active .hero-tagline .hero-line{animation-play-state:paused;}
-    .hero .hero-logo    {animation-delay:0.15s;}
-    .hero .hero-tagline {animation:none;opacity:1;transform:none;}
-    .hero-tagline .hero-line:nth-child(1){animation-delay:0.4s;}
-    .hero-tagline .hero-line:nth-child(2){animation-delay:0.65s;}
-    .hero-tagline .hero-line:nth-child(3){animation-delay:0.9s;}
-    .hero-tagline .hero-line:nth-child(4){animation-delay:1.15s;}
-    .hero .hero-cta     {animation-delay:1.5s;}
-    @keyframes hero-in{to{opacity:1;transform:translateY(0);}}
-    @keyframes hero-line-in{to{opacity:1;transform:translateY(0);}}
+    body.intro-active .hero-sweep{animation-play-state:paused;}
 
     /* CTA pulse */
     .hero-cta .btn-primary{
       position:relative;
-      animation:cta-pulse 2.4s ease-in-out 2s infinite;
+      animation:cta-in 0.8s cubic-bezier(0.34,1.56,0.64,1) 2.6s forwards, cta-pulse 2.4s ease-in-out 3.5s infinite;
     }
     @keyframes cta-pulse{
       0%,100%{box-shadow:0 0 0 0 rgba(215,72,31,0.5);}
       50%{box-shadow:0 0 0 18px rgba(215,72,31,0);}
+    }
+
+    /* Orange sweep bar — one-shot dramatic sweep on load */
+    .hero-sweep{
+      position:absolute;top:48%;left:-120%;
+      width:100%;height:2px;
+      background:linear-gradient(90deg, transparent 0%, var(--orange) 40%, var(--orange) 60%, transparent 100%);
+      pointer-events:none;z-index:2;
+      animation:sweep-bar 1.4s cubic-bezier(0.77,0,0.175,1) 2.3s forwards;
+      filter:drop-shadow(0 0 8px rgba(215,72,31,0.4));
+    }
+    @keyframes sweep-bar{
+      0%{left:-120%;}
+      100%{left:120%;}
     }
   }
 </style>
@@ -1420,7 +1466,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1 class="hero-logo">V/AIBOU</h1>
+    <h1 class="hero-logo"><span class="l">V</span><span class="l">/</span><span class="l">A</span><span class="l">I</span><span class="l">B</span><span class="l">O</span><span class="l">U</span></h1>
+    <div class="hero-sweep" aria-hidden="true"></div>
     <div class="hero-tagline">
       <span class="hero-line"><span class="hero-hl">東大・早慶の頭脳</span>と、</span><br>
       <span class="hero-line"><span class="hero-hl">専門家の実務能力</span>。</span><br>
