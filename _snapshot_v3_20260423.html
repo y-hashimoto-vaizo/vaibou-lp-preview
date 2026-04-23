@@ -177,42 +177,6 @@
   .plan-card.featured .btn-primary:hover{background:transparent;color:var(--white);}
   .plan-card:not(.featured) .plan-cta .btn-primary{background:var(--black);color:var(--white);}
 
-  /* FAQ */
-  .faq{background:var(--white);}
-  .faq-intro{
-    font-family:'Noto Sans JP',sans-serif;
-    font-size:clamp(22px, 2.4vw, 36px);font-weight:700;letter-spacing:.04em;line-height:1.5;
-    margin-bottom:48px;max-width:900px;
-  }
-  .faq-list{
-    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
-  }
-  .faq-item{
-    padding:36px 0;
-    border-top:1px solid #d9d9d9;
-    display:grid;grid-template-columns:minmax(200px, 360px) 1fr;gap:60px;
-  }
-  .faq-item:first-child{border-top:none;}
-  @media(max-width:840px){
-    .faq-item{grid-template-columns:1fr;gap:14px;padding:28px 0;}
-  }
-  .faq-q{
-    font-family:'Noto Sans JP',sans-serif;
-    font-size:clamp(18px, 1.8vw, 22px);font-weight:700;letter-spacing:.03em;line-height:1.5;
-    color:var(--black);
-    display:flex;gap:14px;align-items:flex-start;
-  }
-  .faq-q .qmark{
-    font-family:'Inter',sans-serif;font-weight:900;font-size:18px;
-    letter-spacing:.1em;color:var(--black);flex-shrink:0;
-    padding-top:2px;
-  }
-  .faq-a{
-    font-family:'Noto Sans JP',sans-serif;
-    font-size:15px;font-weight:300;line-height:1.95;color:var(--gray-4);
-  }
-  .faq-a strong{font-weight:700;color:var(--black);}
-
   /* Sticky mobile CTA */
   .sticky-cta{
     display:none;
@@ -541,7 +505,6 @@
       <a href="#price" class="hide-mobile">料金</a>
       <a href="#values" class="hide-mobile">価値</a>
       <a href="#family" class="hide-mobile">ロール</a>
-      <a href="#faq" class="hide-mobile">FAQ</a>
       <a href="tel:000-0000-0000" class="hide-mobile"><svg class="ico"><use href="#i-phone"/></svg>お電話</a>
       <a href="#cta" class="nav-cta">無料で試す</a>
     </div>
@@ -812,65 +775,6 @@
       その先にあるのは、人類が「生きるためのシゴト」から解放され、「スキ」に没頭できる社会。<br>
       V/AIBOU はその装置。
     </p>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="wrap">
-    <div class="label">FAQ</div>
-    <h2 class="faq-intro">迎える前に、<br>よくあるご質問。</h2>
-
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.01</span>本当にAIだけで<br>仕事が回るの？</div>
-        <div class="faq-a">
-          完全自律ではありません。重要な判断は必ず人間が最終決定する設計です。<strong>AIが9割の作業を代行し、あなたは「判断」と「承認」に集中できる状態</strong>を作ります。<br><br>
-          ロール設定時に「何を任せて、何を承認制にするか」を細かくコントロール可能。慎重に始めたい業務は全件承認、定型業務は自動処理、といった段階的な運用ができます。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.02</span>うちの業種でも<br>使えるの？</div>
-        <div class="faq-a">
-          Web制作・広告運用・経理・広報・補助金申請・経営参謀…<strong>業務カテゴリで設計</strong>しているため、業種を問わずこれらの業務が発生する企業であれば導入できます。<br><br>
-          初回ヒアリングで業種特有の要件を確認し、最適なロール組み合わせをご提案します。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.03</span>解約は本当に<br>いつでもOK？</div>
-        <div class="faq-a">
-          <strong>最低契約は3ヶ月のみ。以降はいつでも解約・ロール入れ替え可能</strong>です。年契約・違約金・複雑な解約手続きは一切ありません。<br><br>
-          翌月1日からの解約は、管理画面のボタン1つで完了します。「合わない」と思ったら、その場で止められます。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.04</span>情報漏洩は<br>大丈夫？</div>
-        <div class="faq-a">
-          データは暗号化して保管し、<strong>AIモデルの学習には使用しません</strong>。VAIZO独自のマルチテナント基盤で他社と完全分離、指定フォルダのみを参照する設計です。<br><br>
-          経営戦略など機密情報を含むフォルダは、<strong>読み込みON/OFFをトグルで切替可能</strong>。エンタープライズプランでは専用サーバー・SSO・SAML連携・SOC2準拠オプションも提供します。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.05</span>成果が出なかったら<br>どうなる？</div>
-        <div class="faq-a">
-          最低契約3ヶ月のため、その期間は課金が発生します（返金はありません）。ただし<strong>いつでも止められます</strong>し、ロールを別のものに入れ替えて試すことも可能です。<br><br>
-          導入時に「何を"成果"とするか」を一緒に定義し、月次レビューで進捗を可視化。3ヶ月で成果の芽が見えない場合、設計見直しまで含めて無料で伴走します。
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q"><span class="qmark">Q.06</span>AIスタッフは、<br>誰が管理するの？</div>
-        <div class="faq-a">
-          VAIZOが一元管理します。お客様の管理画面でロールの追加・削除・権限設定が可能ですが、<strong>インフラ運用・モデル更新・セキュリティ対応はすべてVAIZOが担当</strong>。情報システム部を持たない中小企業でも運用負荷ゼロで使えます。
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
