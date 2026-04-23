@@ -795,6 +795,85 @@
     color:#ccc;
   }
 
+  /* ===== SUPPORT (3週間伴走) ===== */
+  .support{
+    background:var(--white);
+    padding-top:clamp(100px, 14vw, 180px);padding-bottom:clamp(100px, 14vw, 180px);
+  }
+  .support-head{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(30px, 4vw, 56px);font-weight:900;letter-spacing:.02em;line-height:1.35;
+    margin-bottom:20px;color:var(--black);
+  }
+  .support-sub{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:clamp(16px, 1.4vw, 20px);font-weight:700;line-height:1.85;color:var(--black);
+    margin-bottom:56px;
+  }
+  .support-timeline{
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;
+    border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  }
+  @media(max-width:980px){.support-timeline{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.support-timeline{grid-template-columns:1fr;}}
+  .support-step{
+    padding:36px 28px 36px 0;
+    border-right:1px solid var(--gray-2);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .support-step:last-child{border-right:none;padding-right:0;}
+  .support-step:not(:first-child){padding-left:28px;}
+  @media(max-width:980px){
+    .support-step:nth-child(2n){border-right:none;}
+    .support-step:nth-child(n+3){border-top:1px solid var(--gray-2);}
+    .support-step:nth-child(odd){padding-left:0;padding-right:28px;}
+    .support-step:nth-child(even){padding-left:28px;}
+  }
+  @media(max-width:640px){
+    .support-step{border-right:none !important;padding:28px 0 !important;}
+    .support-step:not(:first-child){border-top:1px solid var(--gray-2);}
+  }
+  .support-day{
+    font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(32px, 3vw, 44px);
+    letter-spacing:-0.02em;line-height:1;color:var(--black);
+  }
+  .support-time{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:var(--gray-4);
+    display:inline-block;padding:4px 10px;border:1px solid var(--black);align-self:flex-start;
+  }
+  .support-step h3{
+    font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:18px;letter-spacing:.03em;
+    line-height:1.5;margin-top:8px;color:var(--black);
+  }
+  .support-step p{
+    font-family:'Noto Sans JP',sans-serif;font-size:13.5px;font-weight:400;line-height:1.85;
+    color:var(--gray-4);
+  }
+  .support-summary{
+    margin-top:48px;padding:36px 40px;
+    background:var(--black);color:var(--white);
+    display:flex;flex-wrap:wrap;gap:40px;align-items:center;
+  }
+  @media(max-width:640px){.support-summary{padding:28px;gap:24px;flex-direction:column;align-items:flex-start;}}
+  .support-summary-col{flex:1;min-width:200px;}
+  .support-summary-label{
+    font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;
+    color:#aaa;text-transform:uppercase;margin-bottom:10px;
+  }
+  .support-summary-value{
+    font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px, 2.2vw, 32px);
+    color:#fff;letter-spacing:.02em;
+  }
+  .support-summary-line{
+    width:1px;align-self:stretch;background:#333;
+  }
+  @media(max-width:640px){.support-summary-line{display:none;}}
+  .support-closing{
+    margin-top:32px;
+    font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:700;line-height:1.8;color:var(--black);
+  }
+
   /* ===== CATALOG (AI社員カタログ) ===== */
   .family{
     background:var(--gray-1);
@@ -1627,6 +1706,61 @@
   </div>
 </section>
 
+<!-- SUPPORT (3週間伴走) -->
+<section class="support" id="support">
+  <div class="wrap">
+    <div class="label">Support</div>
+    <h2 class="support-head">3週間で、AIと仕事する<br>感覚を肌で確かめる。</h2>
+    <p class="support-sub">合わなければ、課金は一切発生しません。</p>
+
+    <div class="support-timeline">
+
+      <div class="support-step">
+        <div class="support-day">Day 1</div>
+        <div class="support-time">60 min</div>
+        <h3>キックオフ</h3>
+        <p>任せたい業務を、弊社と一緒に決めます。AIスタッフはその日のうちに動き始め、翌日には最初の成果物が手元に。</p>
+      </div>
+
+      <div class="support-step">
+        <div class="support-day">Day 7</div>
+        <div class="support-time">15 min</div>
+        <h3>中間チェック</h3>
+        <p>1週間の稼働を一緒に確認。「もっと任せたい業務」が見えてきます。</p>
+      </div>
+
+      <div class="support-step">
+        <div class="support-day">Day 14</div>
+        <div class="support-time">30 min</div>
+        <h3>レビュー</h3>
+        <p>2週間分の稼働ログを一緒に読み解き、設計を調整します。</p>
+      </div>
+
+      <div class="support-step">
+        <div class="support-day">Day 21</div>
+        <div class="support-time">30 min</div>
+        <h3>最終判定</h3>
+        <p>成果を数字で確認。続けるかは、その時点で決めてください。合わなければ、課金は一切発生しません。</p>
+      </div>
+
+    </div>
+
+    <div class="support-summary">
+      <div class="support-summary-col">
+        <div class="support-summary-label">3週間で拘束する時間</div>
+        <div class="support-summary-value">合計 約135分</div>
+      </div>
+      <div class="support-summary-line"></div>
+      <div class="support-summary-col">
+        <div class="support-summary-label">費用</div>
+        <div class="support-summary-value">0 円</div>
+      </div>
+    </div>
+
+    <p class="support-closing">この間にあなたが手にするのは、AIと3週間働いた、実戦の経験。</p>
+  </div>
+</section>
+
 <!-- INLINE CTA BAND -->
 <section class="cta-band">
   <h3>まずは1人、雇ってみませんか。</h3>
@@ -1914,8 +2048,8 @@
 (function(){
   if(!('IntersectionObserver' in window)) return;
   // Auto-tag reveal candidates
-  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .security-head, .security-sub, .faq-intro, .future-statement, .cta h2, .cta-band h3';
-  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .case-grid, .faq-list, .price-table';
+  const single = '.service-head, .service-sub, .demo-head, .demo-sub, .demo-screenshot, .parallel-head, .parallel-sub, .parallel-screenshot, .catalog-head, .catalog-sub, .price-head, .ba-head, .ba-sub, .why-head, .case-head, .case-sub, .security-head, .security-sub, .support-head, .support-sub, .support-summary, .support-closing, .faq-intro, .future-statement, .cta h2, .cta-band h3';
+  const stagger = '.service-grid, .demo-grid, .parallel-cards, .catalog-grid, .plans-grid, .ba-grid, .why-grid, .case-grid, .support-timeline, .faq-list, .price-table';
   document.querySelectorAll(single).forEach(el=>el.classList.add('reveal'));
   document.querySelectorAll(stagger).forEach(el=>el.classList.add('reveal-stagger'));
   const io = new IntersectionObserver((entries)=>{
